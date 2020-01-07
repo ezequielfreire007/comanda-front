@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatToolbarModule,
     MatIconModule
   ],
-  exports:[
+  exports: [
     MatToolbarModule,
     MatIconModule
   ]
