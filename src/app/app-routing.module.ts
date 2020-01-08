@@ -33,7 +33,7 @@ const routes: Routes = [
       }
     ],
   },
-  { path: '**', component: PageNotFoundModule }
+  { path: '**', loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) }
 ];
 
 @NgModule({

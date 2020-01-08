@@ -1,8 +1,8 @@
 export interface Menu {
-    id: number;
-    nombre: string;
-    precio: number;
+    id_menu: number;
+    nombre_menu: string;
+    precio_menu: number;
     id_tipo: string;
-    descripcion: string;
-    foto: string;
+    descripcion_menu: string;
+    foto_menu: string;
 }

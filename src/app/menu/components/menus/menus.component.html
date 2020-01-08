@@ -1,1 +1,7 @@
-<p>menus works!</p>
+<div class="product-grid">
+    <app-menu 
+      *ngFor="let menu of menus" 
+      (productClicket)="clickMenu($event)" 
+      [menu]="menu">
+    </app-menu>
+  </div>

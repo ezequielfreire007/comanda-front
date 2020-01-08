@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Menu } from '../../../core/models/menu';
+
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  @Input() menu: Menu;
+  @Output() productClicket: EventEmitter<any> = new EventEmitter();
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  addPedido() {
+    console.log(`agrega el pedido a la lista de pendientes`);
   }
+
 
 }
