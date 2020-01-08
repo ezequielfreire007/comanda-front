@@ -1,0 +1,15 @@
+<mat-card>
+    <div class="crop-image">
+        <img [src]="mesa.foto_mesa" alt="">
+    </div>
+    <mat-card-header>
+        <mat-card-title>{{ mesa.codigo_mesa}}</mat-card-title>
+        <mat-card-subtitle>${{ mesa.id_estado_mesa }}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <mat-card-content>
+        <p>{{ menu.descripcion_menu }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button  (click)="addPedido()" mat-raised-button color="primary">Hacer pedido</button>
+    </mat-card-actions> -->
+</mat-card>

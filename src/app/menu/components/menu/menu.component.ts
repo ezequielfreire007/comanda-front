@@ -18,6 +18,7 @@ export class MenuComponent implements OnInit {
 
   addPedido() {
     console.log(`agrega el pedido a la lista de pendientes`);
+    this.productClicket.emit();
   }
 
 
