@@ -5,7 +5,6 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { SocioGuard } from './guard/socio.guard';
 import { MozoGuard } from './guard/mozo.guard';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -28,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'empleado',
-        canActivate: [SocioGuard, MozoGuard],
+        canActivate: [SocioGuard],
         loadChildren: () => import('./empleado/empleado.module').then(m => m.EmpleadoModule)
       }
     ],
