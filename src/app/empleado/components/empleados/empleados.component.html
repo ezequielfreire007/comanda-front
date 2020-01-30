@@ -1,1 +1,6 @@
-<p>empleados works!</p>
+<div class="product-grid">
+    <app-empleado
+        *ngFor="let empleado of empleados"
+        [empleado]="empleado">
+    </app-empleado>
+</div>
