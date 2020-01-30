@@ -7,6 +7,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 
 
@@ -18,14 +19,16 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     MatCardModule,
     MatButtonModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSelectModule
   ],
   exports: [
     MatToolbarModule,
     MatIconModule,
     MatCardModule,
     MatButtonModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatSelectModule
   ]
 })
 export class MaterializeModule { }
