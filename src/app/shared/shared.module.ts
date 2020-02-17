@@ -7,11 +7,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 import { MaterializeModule } from '../materialize/materialize.module';
+import { ValidarRolesDirective } from './directives/validar-roles/validar-roles.directive';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ValidarRolesDirective
   ],
   exports: [
     HeaderComponent,
