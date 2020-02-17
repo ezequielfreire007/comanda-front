@@ -4,30 +4,42 @@ import { LayoutComponent } from './layout/layout.component';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { SocioGuard } from './guard/socio.guard';
 import { MozoGuard } from './guard/mozo.guard';
+import { AuthModule } from './auth/auth.module';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'login',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
   {
     path: '',
     component: LayoutComponent,
     children: [
       {
         path: 'mesa',
-        canActivate: [SocioGuard, MozoGuard],
+        canActivate: [AuthGuard],
+        data: { roles : [5, 4]},
         loadChildren: () => import('./mesa/mesa.module').then(m => m.MesaModule)
       },
       {
         path: 'menu',
-        canActivate: [SocioGuard, MozoGuard],
+        canActivate: [AuthGuard],
+        data: { roles : [ 5, 4]},
         loadChildren: () => import('./menu/menu.module').then(m => m.MenuModule)
       },
       {
         path: 'pedido',
-        canActivate: [SocioGuard, MozoGuard],
+        canActivate: [AuthGuard],
+        data: { roles : [ 5, 4, 3, 2, 1]},
+        pathMatch: 'full',
         loadChildren: () => import('./pedido/pedido.module').then(m => m.PedidoModule)
       },
       {
         path: 'empleado',
-        canActivate: [SocioGuard],
+        canActivate: [AuthGuard],
+        data: { roles : [5]},
         loadChildren: () => import('./empleado/empleado.module').then(m => m.EmpleadoModule)
       }
     ],
