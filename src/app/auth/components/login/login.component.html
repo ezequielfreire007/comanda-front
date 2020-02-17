@@ -1,0 +1,50 @@
+<div class="container-login fondo">
+    <div class="element-grid ">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div>
+            <form [formGroup]="form" class="card-form" (ngSubmit)="loginUser($event)">
+                <mat-card class="login">
+                  <mat-card-header>
+                    <mat-card-title class="text-center">Ingreso de empleado</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <div class="row">
+                      <div class="col-xs">
+                        <mat-form-field>
+                          <input placeholder="Nombre" formControlName="nombre" matInput type="text">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs">
+                        <mat-form-field>
+                          <input placeholder="Password" formControlName="password" matInput type="password">
+                        </mat-form-field>
+                      </div>
+                    </div>
+                  </mat-card-content>
+                  <mat-card-actions>
+                        <button [disabled]="form.invalid" mat-raised-button type="submit">Ingresar</button>
+                  </mat-card-actions>
+                </mat-card>
+              </form>
+        </div>
+        <div></div>
+        <div></div>
+        <div>
+            <div>
+                <button mat-raised-button (click)="ingreso('socio')">Socio</button>
+                <button mat-raised-button (click)="ingreso('mozo')">Mozo</button>
+                <button mat-raised-button (click)="ingreso('cocinero')">Cocinero</button>
+                <button mat-raised-button (click)="ingreso('bartender')">Bartender</button>
+                <button mat-raised-button (click)="ingreso('cervecero')">Cervecero</button>
+                <button mat-raised-button (click)="openSnackBar('prueba','test')">pop up</button>
+            </div>
+        </div>
+        <div></div>
+    </div>
+</div>
+

@@ -1,0 +1,30 @@
+
+.fondo {
+    background-color: #3f51b5;
+}
+
+.container-login {
+    width: 100%;
+    height: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.card-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+
+// media query establece el tamaño para celular
+@media(min-with: 576px){
+    .container-login {
+        max-width: 1110px;
+        padding-right: 16px;
+        padding-left: 16px;
+    }
+
+}
