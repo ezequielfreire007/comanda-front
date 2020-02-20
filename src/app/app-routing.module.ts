@@ -15,6 +15,7 @@ const routes: Routes = [
   },
   {
     path: '',
+    pathMatch: 'prefix',
     component: LayoutComponent,
     children: [
       {
@@ -33,7 +34,6 @@ const routes: Routes = [
         path: 'pedido',
         canActivate: [AuthGuard],
         data: { roles : [ 5, 4, 3, 2, 1]},
-        pathMatch: 'full',
         loadChildren: () => import('./pedido/pedido.module').then(m => m.PedidoModule)
       },
       {
