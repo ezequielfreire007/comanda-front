@@ -1,5 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Mesa } from 'src/app/core/models/mesa';
+import { EstadosMesa } from '../../../core/models/estados-mesa';
+import { MesaService } from '../../../core/services/mesa/mesa.service';
+
+import { Pedido } from '../../../core/models/pedido';
+import { JwtHelperService } from "@auth0/angular-jwt";
+
 
 @Component({
   selector: 'app-mesa',
@@ -7,14 +13,65 @@ import { Mesa } from 'src/app/core/models/mesa';
   styleUrls: ['./mesa.component.scss']
 })
 export class MesaComponent implements OnInit {
-
   @Input() mesa: Mesa;
   // @Output() productClicket: EventEmitter<any> = new EventEmitter();
- 
-  constructor() { }
+
+  @Input() estadoMesa: EstadosMesa[] = [];
+  selected: number;
+  pedido: Pedido;
+  nombreCliente: string;
+  helper = new JwtHelperService();
+
+  constructor(
+    private mesaService: MesaService
+  ) { }
 
   ngOnInit() {
+    this.selected = this.mesa.id_estado_mesa;
+    this.nombreCliente = '';
   }
 
+  selectMesa() {
+    console.log(this.selected);
+    if (this.selected) {
+      if (this.selected !== this.mesa.id_estado_mesa ) {
+        console.log('actualizo base de datos');
+        try {
+          this.updateMesa();
+        } catch (error) {
+          console.log(error);
+        }
+
+      } else {
+        console.log('no actualizo base de datos');
+      }
   
+      // Genero pedido y lo guardo en localStorage para lueo persistir en db
+      const decodeToken =  this.helper.decodeToken(localStorage.getItem('token')); // decodifico el token para tomar datos del empleados
+
+      this.pedido = {
+        fecha_pedido: new Date(new Date()),
+        id_mesa: this.mesa.id_mesa,
+        nombre_cliente: this.nombreCliente,
+        id_mozo: decodeToken.empleado.id_empleado,
+        id_empleado: decodeToken.empleado.id_empleado
+      };
+
+      console.log(this.pedido)
+      localStorage.setItem('pedido', JSON.stringify(this.pedido));
+      localStorage.setItem('empleado', JSON.stringify(decodeToken.empleado));
+    } else {
+      console.log('no hace nada');
+    }
+  }
+
+  updateMesa() {
+    const updateMesa: Partial<Mesa> = {
+      id_estado_mesa: this.selected,
+    };
+    this.mesaService.updateMesa(this.mesa.id_mesa, updateMesa).subscribe(mesa => {
+      console.log(mesa);
+    });
+  }
+
 }

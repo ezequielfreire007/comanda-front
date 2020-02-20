@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MesaService } from '../../../core/services/mesa/mesa.service';
 import { Mesa } from 'src/app/core/models/mesa';
+import { EstadosMesaService } from '../../../core/services/estados-mesa/estados-mesa.service';
+import { EstadosMesa } from '../../../core/models/estados-mesa';
 
 @Component({
   selector: 'app-mesas',
@@ -10,13 +12,16 @@ import { Mesa } from 'src/app/core/models/mesa';
 export class MesasComponent implements OnInit {
 
   mesas: Mesa[] = [];
+  estadoMesa: EstadosMesa[] = [];
 
   constructor(
-    private mesaService: MesaService
+    private mesaService: MesaService,
+    private estadoMesaService: EstadosMesaService
   ) { }
 
   ngOnInit() {
     this.fetchMesa();
+    this.fetchEstados();
   }
 
   fetchMesa() {
@@ -24,6 +29,14 @@ export class MesasComponent implements OnInit {
     .subscribe(mesas => {
       console.log(mesas);
       this.mesas = mesas;
+    });
+  }
+
+  fetchEstados() {
+    this.estadoMesaService.getAllEstadosMesa()
+    .subscribe( estadoMesa => {
+      console.log(estadoMesa);
+      this.estadoMesa = estadoMesa;
     });
   }
 
