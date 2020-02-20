@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     if (this.auth.loggedIn()) {
       console.log('usuario ya logeador direccionar a empleados');
-      this.router.navigate(['/home']);
+      this.router.navigate(['/pedido']);
     }
   }
 
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', res['token']);
 
         if (!this.auth.redirectUrl) {
-          this.auth.redirectUrl = 'home';
+          this.auth.redirectUrl = 'predido';
         }
         this.router.navigate([this.auth.redirectUrl]);
       } else {
