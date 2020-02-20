@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Menu } from '../../models/menu';
 
+import { environment } from '../../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,10 +15,10 @@ export class MenuService {
   ) { }
 
   getAllMenus() {
-    return this.http.get<Menu[]>('http://localhost:8080/menu-orm/');
+    return this.http.get<Menu[]>(`${environment.url_api}/menu-orm/`);
   }
 
   getMenu(id: string) {
-    return this.http.get(`http://localhost:8080/menu-orm/${id}`);
+    return this.http.get(`${environment.url_api}/menu-orm/${id}`);
   }
 }

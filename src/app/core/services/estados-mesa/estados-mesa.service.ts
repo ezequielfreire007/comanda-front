@@ -3,6 +3,9 @@ import { HttpClient } from '@angular/common/http';
 
 import { EstadosMesa } from '../../models/estados-mesa';
 
+import { environment } from '../../../../environments/environment';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,10 +16,10 @@ export class EstadosMesaService {
   ) { }
 
   getAllEstadosMesa() {
-    return this.http.get<EstadosMesa>('http://localhost:8080/estados-mesa-orm/');
+    return this.http.get<EstadosMesa[]>(`${environment.url_api}/estado-mesa-orm/`);
   }
 
   getEstadoMesa(id: string) {
-    return this.http.get(`http://localhost:8080/mesa-orm/${id}`);
+    return this.http.get(`${environment.url_api}/mesa-orm/${id}`);
   }
 }
