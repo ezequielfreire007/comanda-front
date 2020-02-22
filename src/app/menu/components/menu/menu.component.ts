@@ -12,13 +12,15 @@ export class MenuComponent implements OnInit {
   @Input() menu: Menu;
   @Output() productClicket: EventEmitter<any> = new EventEmitter();
 
+
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
-  addPedido() {
+  addPedido(id: number) {
     console.log(`agrega el pedido a la lista de pendientes`);
-    this.productClicket.emit();
+    this.productClicket.emit(id);
   }
 
 
