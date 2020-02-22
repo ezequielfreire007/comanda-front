@@ -5,6 +5,7 @@ import { MesaRoutingModule } from './mesa-routing.module';
 import { MesaComponent } from './components/mesa/mesa.component';
 import { MesasComponent } from './components/mesas/mesas.component';
 import { MaterializeModule } from '../materialize/materialize.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MaterializeModule } from '../materialize/materialize.module';
   imports: [
     CommonModule,
     MesaRoutingModule,
-    MaterializeModule
+    MaterializeModule,
+    SharedModule
   ]
 })
 export class MesaModule { }
