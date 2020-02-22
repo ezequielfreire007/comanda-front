@@ -14,10 +14,9 @@
                 <mat-option *ngFor="let estado of estadoMesa" [value]="estado.id_estado_mesa">{{estado.descripcion_estado_mesa}}</mat-option>
               </mat-select>
         </mat-form-field>
-        <input matInput placeholder="Nombre del Cliente" [value]="nombreCliente">
+        <input matInput placeholder="Nombre del Cliente" type="text" [(ngModel)]="nombreCliente"  [value]="nombreCliente">
     </mat-card-content>
     <mat-card-actions>
-        <a mat-raised-button color="primary" (click)="selectMesa()" [routerLink]="['/menu']">Seleccionar</a> 
-        
+        <a mat-raised-button color="primary" (click)="selectMesa()" [routerLink]="['/menu']">Seleccionar</a>    
     </mat-card-actions>
 </mat-card>

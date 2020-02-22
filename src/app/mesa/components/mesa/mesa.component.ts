@@ -4,7 +4,8 @@ import { EstadosMesa } from '../../../core/models/estados-mesa';
 import { MesaService } from '../../../core/services/mesa/mesa.service';
 
 import { Pedido } from '../../../core/models/pedido';
-import { JwtHelperService } from "@auth0/angular-jwt";
+import { JwtHelperService } from '@auth0/angular-jwt';
+
 
 
 @Component({
@@ -18,7 +19,7 @@ export class MesaComponent implements OnInit {
 
   @Input() estadoMesa: EstadosMesa[] = [];
   selected: number;
-  pedido: Pedido;
+  pedido: Pedido = {};
   nombreCliente: string;
   helper = new JwtHelperService();
 
@@ -29,6 +30,8 @@ export class MesaComponent implements OnInit {
   ngOnInit() {
     this.selected = this.mesa.id_estado_mesa;
     this.nombreCliente = '';
+    localStorage.removeItem('empleado');
+    localStorage.removeItem('pedido');
   }
 
   selectMesa() {
@@ -48,14 +51,12 @@ export class MesaComponent implements OnInit {
   
       // Genero pedido y lo guardo en localStorage para lueo persistir en db
       const decodeToken =  this.helper.decodeToken(localStorage.getItem('token')); // decodifico el token para tomar datos del empleados
-
-      this.pedido = {
-        fecha_pedido: new Date(new Date()),
-        id_mesa: this.mesa.id_mesa,
-        nombre_cliente: this.nombreCliente,
-        id_mozo: decodeToken.empleado.id_empleado,
-        id_empleado: decodeToken.empleado.id_empleado
-      };
+     
+      this.pedido.id_estado = this.mesa.id_estado_mesa;
+      this.pedido.id_mesa = this.mesa.id_mesa;
+      this.pedido.nombre_cliente = this.nombreCliente;
+      this.pedido.id_mozo = decodeToken.empleado.id_empleado;
+      this.pedido.id_empleado = decodeToken.empleado.id_empleado;
 
       console.log(this.pedido)
       localStorage.setItem('pedido', JSON.stringify(this.pedido));
