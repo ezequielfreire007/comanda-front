@@ -6,6 +6,7 @@
                 <a mat-button *appValidarRoles="[4,5]" routerLink="/menu" routerLinkActive="active">Menus</a>
                 <a mat-button routerLink="/pedido" routerLinkActive="active">Pedidos</a>
                 <a mat-button *appValidarRoles="[5]" routerLink="/empleado" routerLinkActive="active">Empleados</a>
+                <a mat-raised-button color="accent" (click)="logout()" routerLinkActive="active">Logout</a>
             </nav>
             <!-- <a mat-raised-button matBadge="4" matBadgeColor="warn">
                 <mat-icon>shopping_cart</mat-icon>
