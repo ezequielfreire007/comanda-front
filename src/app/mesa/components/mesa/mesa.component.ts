@@ -30,7 +30,7 @@ export class MesaComponent implements OnInit {
   ngOnInit() {
     this.selected = this.mesa.id_estado_mesa;
     this.nombreCliente = '';
-    localStorage.removeItem('empleado');
+    // localStorage.removeItem('empleado');
     localStorage.removeItem('pedido');
   }
 
@@ -48,19 +48,20 @@ export class MesaComponent implements OnInit {
       } else {
         console.log('no actualizo base de datos');
       }
-  
+
       // Genero pedido y lo guardo en localStorage para lueo persistir en db
       const decodeToken =  this.helper.decodeToken(localStorage.getItem('token')); // decodifico el token para tomar datos del empleados
-     
-      this.pedido.id_estado = this.mesa.id_estado_mesa;
+
+      // this.pedido.id_estado = this.mesa.id_estado_mesa;
+      this.pedido.id_estado = 1; // pediente
       this.pedido.id_mesa = this.mesa.id_mesa;
       this.pedido.nombre_cliente = this.nombreCliente;
       this.pedido.id_mozo = decodeToken.empleado.id_empleado;
       this.pedido.id_empleado = decodeToken.empleado.id_empleado;
 
-      console.log(this.pedido)
+      console.log(this.pedido);
       localStorage.setItem('pedido', JSON.stringify(this.pedido));
-      localStorage.setItem('empleado', JSON.stringify(decodeToken.empleado));
+      // localStorage.setItem('empleado', JSON.stringify(decodeToken.empleado));
     } else {
       console.log('no hace nada');
     }
