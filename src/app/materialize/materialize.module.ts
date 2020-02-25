@@ -20,8 +20,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
-
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -44,7 +43,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatGridListModule,
     MatMenuModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatFormFieldModule,
   ],
   exports: [
     MatToolbarModule,
@@ -63,7 +63,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatGridListModule,
     MatMenuModule,
     MatStepperModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatFormFieldModule,
   ]
 })
 export class MaterializeModule { }
