@@ -14,7 +14,11 @@ export class PedidoService {
   ) { }
 
   getAllPedido() {
-    return this.http.get<Pedido[]>(`${environment.url_api}/pedido-orm`);
+    return this.http.get<Pedido[]>(`${environment.url_api}/pedido-orm/`);
+  }
+
+  getPedidoFecha(data: object) {
+    return this.http.post<Pedido[]>(`${environment.url_api}/pedido-orm/pedido/fecha`, data);
   }
 
   getPedido(id: string) {
