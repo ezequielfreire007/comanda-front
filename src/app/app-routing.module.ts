@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-import { PageNotFoundModule } from './page-not-found/page-not-found.module';
-import { SocioGuard } from './guard/socio.guard';
-import { MozoGuard } from './guard/mozo.guard';
-import { AuthModule } from './auth/auth.module';
 import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
