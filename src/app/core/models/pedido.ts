@@ -1,5 +1,5 @@
 export interface Pedido {
-    id_pedido?: number;
+    id_pedidos?: number;
     codigo_pedido?: string;
     id_estado?: number;
     fecha_pedido?: string;
@@ -11,4 +11,7 @@ export interface Pedido {
     id_mozo?: number;
     id_empleado?: number;
     nombre_cliente?: string;
+    id_tipo_menu?: number;
+    nombre_menu?: string;
+    descripcion_estado?: string;
 }
