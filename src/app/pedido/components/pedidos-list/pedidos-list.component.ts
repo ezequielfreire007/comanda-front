@@ -4,6 +4,9 @@ import { Pedido } from '../../../core/models/pedido';
 import { MatTableDataSource, MatTable } from '@angular/material';
 import { Empleado } from '../../../core/models/empleado';
 import { Router } from '@angular/router';
+import { MesaService } from '../../../core/services/mesa/mesa.service';
+import { Mesa } from '../../../core/models/mesa';
+
 
 @Component({
   selector: 'app-pedidos-list',
@@ -29,7 +32,8 @@ export class PedidosListComponent implements OnInit {
 
   constructor(
     private pedidoService: PedidoService,
-    private router: Router
+    private router: Router,
+    private mesaService: MesaService
   ) {
     this.empleado = JSON.parse(localStorage.getItem('empleado'));
     if (!this.empleado) {
@@ -65,17 +69,59 @@ export class PedidosListComponent implements OnInit {
 
 
   tomarPedido(pedido: Pedido) {
-    pedido.id_estado = 2; // preparandose
-    console.log(pedido);
+    switch (this.empleado.id_tipo) {
+      case 5:
+        // no se hace nada
+        break;
+      case 4:
+        pedido.id_estado = 4; // entregado
+        this.updateEstadoMesa(2, pedido);
+        break;
+      default:
+        pedido.id_estado = 2; // preparandose
+        break;
+    }
+
     this.pedidoService.updatePedido(pedido.id_pedidos, pedido).subscribe(updatePedido => {
       console.log(updatePedido);
     });
-
-    // this.fetchPedidosFecha();
+    this.router.navigate(['/']);
   }
 
-  pedidoListo() {
+  pedidoListo(pedido: Pedido) {
+    switch (this.empleado.id_tipo) {
+      case 5:
+        // no se hace nada
+        break;
+      case 4:
+        pedido.id_estado = 5; // finalizado
+        pedido.id_tipo_menu = 5;
+        this.updateEstadoMesa(4, pedido); // actualizo el estado de la mesa
+        break;
+      default:
+        pedido.id_estado = 3; // preparandose
+        pedido.id_tipo_menu = 4;
+        break;
+    }
 
+    this.pedidoService.updatePedido(pedido.id_pedidos, pedido).subscribe(updatePedido => {
+      console.log(updatePedido);
+    });
+    this.router.navigate(['/']);
+
+  }
+
+  cerrarPedido(pedido: Pedido) {
+
+  }
+
+  updateEstadoMesa(id: number, pedido: Pedido) {
+    const updateMesa: Partial<Mesa> = {
+      id_estado_mesa: id,
+    };
+    this.mesaService.updateMesa(pedido.id_mesa, updateMesa).subscribe(mesa => {
+      console.log(mesa);
+    });
   }
 
 }

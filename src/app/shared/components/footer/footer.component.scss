@@ -7,7 +7,10 @@ $primary: mat-palette($mat-indigo);
 }
 
 footer {
-  padding: 50px 0px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding: 100px 0px;
   margin-top: 20px;
   background-color: mat-color($primary);
   .box {

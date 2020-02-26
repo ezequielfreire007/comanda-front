@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 // import { Router } from '@angular/router';
 import { Login } from '../../models/login';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,8 @@ export class AuthService {
   // Login del empleado
   public loginEmpleado(login: Login) {
     // const request: JSON = JSON.parse(JSON.stringify(login));
-    return this.http.post('http://localhost:8080/empleados/login', login);
+    console.log( environment.url_api );
+    return this.http.post(`${environment.url_api}/empleados/login`, login);
     // return this.httpGeneric.httpPostP('empleados/login', login); // retorna el token del usuario
   }
 

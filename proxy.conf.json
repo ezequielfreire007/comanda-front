@@ -1,6 +1,6 @@
 {
     "/*": {
-      "target": "[https://comandautn.herokuapp.com](https://comandautn.herokuapp.com)",
+      "target": "https://comandautn.herokuapp.com",
       "secure": false,
       "logLevel": "debug",
       "changeOrigin": true
