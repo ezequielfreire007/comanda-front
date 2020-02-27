@@ -5,6 +5,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { Login } from 'src/app/core/models/login';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { FichadaService } from '../../../core/services/fichada/fichada.service';
+import { Fichada } from 'src/app/core/models/fichada';
+
 
 @Component({
   selector: 'app-login',
@@ -19,6 +22,7 @@ export class LoginComponent implements OnInit {
   error: boolean;
   errorMessage: string;
   helper = new JwtHelperService();
+  fichada: Fichada;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -47,6 +51,7 @@ export class LoginComponent implements OnInit {
           // decodifico el token y tomo la data para que este disponible
           const decodeToken =  this.helper.decodeToken(localStorage.getItem('token'));
           localStorage.setItem('empleado', JSON.stringify(decodeToken.empleado));
+
           // redireciono a pedido todos tienen acceso a este boton
           this.router.navigate(['/pedido']);
         } else {
@@ -90,6 +95,8 @@ export class LoginComponent implements OnInit {
         break;
     }
   }
+
+ 
 
   // mensaje de respuesta al usuario
   openSnackBar(message: string, action: string) {
