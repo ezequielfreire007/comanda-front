@@ -76,4 +76,11 @@ export class MesaComponent implements OnInit {
     });
   }
 
+  cobrarCuenta() {
+    const mesa = {
+      id_mesa: this.mesa.id_mesa
+    };
+    localStorage.setItem('mesa-cobrar', JSON.stringify(mesa));
+  }
+
 }
