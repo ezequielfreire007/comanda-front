@@ -6,8 +6,6 @@ import { MesaService } from '../../../core/services/mesa/mesa.service';
 import { Pedido } from '../../../core/models/pedido';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-
-
 @Component({
   selector: 'app-mesa',
   templateUrl: './mesa.component.html',

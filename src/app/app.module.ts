@@ -11,6 +11,12 @@ import { SharedModule } from './shared/shared.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ErrorInterceptor } from './utils/ErrorInterceptor';
 import { JwtInterceptor } from './utils/JWTInterceptro';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 export function getAccessToken() {
   return localStorage.getItem('token');
@@ -19,7 +25,7 @@ export function getAccessToken() {
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,

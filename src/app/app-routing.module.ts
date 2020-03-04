@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    pathMatch: 'prefix',
+    // pathMatch: 'prefix',
     component: LayoutComponent,
     children: [
       {
@@ -45,6 +45,12 @@ const routes: Routes = [
         loadChildren: () => import('./ticket/ticket.module').then(m => m.TicketModule)
       }
     ],
+  },
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    data: { roles : [5]},
+    loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule)
   },
   { path: '**', loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) }
 ];

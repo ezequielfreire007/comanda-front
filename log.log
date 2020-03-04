@@ -1,0 +1,70 @@
+* fb107f7 pasar a development
+*   875f78d Merge branch 'development'
+|\  
+| * 4a7836c se agrega imagen ticket
+* |   e9c407e Merge branch 'development'
+|\ \  
+| |/  
+| * 7104d74 se genera ticket
+* | 5f675b7 se agrega fichada al login y logout
+|/  
+* afcddc3 mod
+* 8f6a377 mod package
+* 3943a31 a subir a produccion
+* 079f251 se quita codigo obsoleto
+* 436370f se importan elementos a materialize
+* bce3a17 se pasa local storage de empleado
+* b10fbed se limpia codigo no utilizable en app routing
+* 3eb82d4 se modifica servicios
+* 08fe551 se optimiza codigo de menu componets
+* e79ae75 se saca la generacion de local storage de empleado y se pasa a login
+* 2b340f1 se modifica pedido para material y rutas
+* 0208bbc se crea model para fichada
+* 6fae5c5 se modifica para que se liste por tipo y fecha del dia los pedidos
+* 2a89f03 se modifica header
+* 3456e60 se modidfica componentes de mesa y menu
+* b7948dc se modifica menu y mesa
+* ed946aa se modifica modulo de mesa
+* 7b4bf60 se quita form de app module
+* bb249cc se genera servicio para pedido
+* 9084e03 se modifica models
+* cd14be1 se agrega form a shared module
+* b2d5887 mod en routing y materialize
+* 44ca0c3 se realiza la logica del componente de mesa
+* 30e7142 se cambia ruta de login
+* c06aa62 se cambia modelo y servicios de pedido y mesa
+* 27fa092 se agrega url de la api
+* d9432d8 se importa elementos a materialize
+* 9587919 se cambia clases css en html
+* 3b87232 se modica clase css en html
+* 9e9ba2a se importa a app module dependencias para jwt e interceptor
+* eed8b5d se agrega login, auth guard y roles a las rutas
+* d465462 se cambia nombre de clase
+* fe49f41 se modifica validacion de roles por lin en nav
+* ff2ea02 se agrega validar roles en shared module
+* 85d66fb se crea servicio auth
+* da97890 se crea auth guard
+* e358ab3 se genera modelo de login y pedido
+* c0cf5f9 se genera modulo auth con login
+* 4f752f9 se agrega directiva para vilidar roles
+* bf7e8c9 se agrega jwt y error interceptor
+* f4d277c se modifica heder y componente de mesas
+* c3b409c se agregan componentes a materialize
+* 742bd20 se agrega rutas
+* 65d78b2 se genera componente de empleado
+* 5b1ace1 se agrega modelo y servicio de estado de mesa
+* 1b27951 se realiza servicios de empleado y mesa, se realiza vista de mesas
+* 44e9d90 se realiza parte de la vista de menus
+* 68bb414 se crea los components para menu
+* e199de6 se genara directorio guard
+* 8ad47cc se agrega models al core
+* f7756cc se agrega img
+* 6e0d520 mod en socio guard y material module
+* 6f8bb68 se agrega guard para las rutas
+* eccb3ad se crea modulos empleado,menu,mesa y pedido
+* c777af7 se genera page-not-found
+* a989ca5 se crea branch de desarrollo
+* 689b82c se genera el footer
+* c7ce061 se completa modulo header
+* bb52336 se agrega modulo  shared, modulo materialze y component layour
+* e451dc6 inicio del proyecto :octocat:

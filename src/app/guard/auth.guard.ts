@@ -11,7 +11,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private auth: AuthService,
-    private router: Router, 
+    private router: Router,
     private jwt: JwtHelperService
     ) { }
 
@@ -32,7 +32,6 @@ export class AuthGuard implements CanActivate {
 
     if (tokenData) {
       const tipoUsuario = tokenData['tipo'];
-      //this.auth.redirectUrl = '/empleados';
       roles.forEach(element => {
         if (tipoUsuario === element) {
           check = true;
