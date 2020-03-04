@@ -31,7 +31,6 @@ export class AuthService {
 
   // Logout del empleado
   public logoutEmpleado() {
-    debugger;
     this.fichada = JSON.parse(localStorage.getItem('fichada'));
 
     const horaSalida = new Date();
