@@ -38,12 +38,6 @@ export class PedidosListComponent implements OnInit {
     this.empleado = JSON.parse(localStorage.getItem('empleado'));
     if (!this.empleado) {
       this.router.navigate(['/mesa']);
-<<<<<<< HEAD
-=======
-    } else {
-      // console.log(this.empleado.id_empleado);
-      // this.ficharEmpleado();
->>>>>>> fb107f7... pasar a development
     }
   }
 

@@ -26,32 +26,10 @@ export class AuthService {
 
   // Logout del empleado
   public logoutEmpleado() {
-<<<<<<< HEAD
-=======
-    // this.fichada = JSON.parse(localStorage.getItem('fichada'));
-
-    // const horaSalida = new Date();
-    // const fecha = horaSalida.toISOString().slice(0, 10);
-    // const hora =  horaSalida.getHours().toString() + ':' +
-    //               horaSalida.getMinutes().toString() + ':' +
-    //               horaSalida.getSeconds().toString();
-
-    // const salida = {
-    //   salida_fichada: fecha + ' ' + hora,
-    // };
-
-    // this.fichadaService.updateFichada(this.fichada.id_fichada, salida).subscribe(update => {
-    //   console.log(update);
-    // });
->>>>>>> fb107f7... pasar a development
     localStorage.removeItem('token');
   }
 
   public getToken() {
-<<<<<<< HEAD
-=======
-    const fichada = localStorage.getItem('fichada');
->>>>>>> fb107f7... pasar a development
     return localStorage.getItem('token');
   }
 
