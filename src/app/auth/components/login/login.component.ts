@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       // tslint:disable-next-line: max-line-length
       const dataLogin: Login = { nombre_empleado : `${this.form.get('nombre').value}`, clave_empleado: `${this.form.get('password').value}`};
-      this.auth.loginEmpleado(dataLogin).subscribe(res => {
+      this.auth.loginEmpleado(dataLogin).subscribe( res => {
         if (res['estado'] === 'ok') {
           // seteo el token en local storage
           localStorage.setItem('token', res['token']);
