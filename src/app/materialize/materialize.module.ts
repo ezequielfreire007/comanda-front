@@ -21,6 +21,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { LayoutModule } from '@angular/cdk/layout';
 
 
 
@@ -46,6 +47,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatStepperModule,
     MatSnackBarModule,
     MatFormFieldModule,
+    LayoutModule
   ],
   exports: [
     MatToolbarModule,
@@ -66,6 +68,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatStepperModule,
     MatSnackBarModule,
     MatFormFieldModule,
+    LayoutModule
   ]
 })
 export class MaterializeModule { }
