@@ -11,10 +11,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MaterializeModule } from '../materialize/materialize.module';
 import { SharedModule } from '../shared/shared.module';
+import { EmpleadosComponent } from './components/empleados/empleados.component';
+import { MesasComponent } from './components/mesas/mesas.component';
+import { PedidosComponent } from './components/pedidos/pedidos.component';
 
 
 @NgModule({
-  declarations: [NavigateComponent],
+  declarations: [NavigateComponent, EmpleadosComponent, MesasComponent, PedidosComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
