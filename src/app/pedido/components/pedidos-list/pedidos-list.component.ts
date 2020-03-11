@@ -27,6 +27,7 @@ export class PedidosListComponent implements OnInit {
         'hora_inicio_pedido',
         'hora_estimada_entrega_pedido',
         'nombre_menu',
+        'precio_menu',
         'actions'
   ];
 
