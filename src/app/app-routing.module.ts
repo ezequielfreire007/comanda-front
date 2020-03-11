@@ -4,16 +4,11 @@ import { LayoutComponent } from './layout/layout.component';
 import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  {
-    path: 'login',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
-  },
   {
     path: '',
-    // pathMatch: 'prefix',
     component: LayoutComponent,
     children: [
+      { path: '', redirectTo: 'pedido', pathMatch: 'full' },
       {
         path: 'mesa',
         canActivate: [AuthGuard],
@@ -43,8 +38,13 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: { roles : [5, 4]},
         loadChildren: () => import('./ticket/ticket.module').then(m => m.TicketModule)
-      }
+      },
+      // { path: '**', loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) }
     ],
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'admin',

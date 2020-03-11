@@ -8,17 +8,20 @@ import { FooterComponent } from './components/footer/footer.component';
 
 import { MaterializeModule } from '../materialize/materialize.module';
 import { ValidarRolesDirective } from './directives/validar-roles/validar-roles.directive';
+import { EstadoEmpleadoPipe } from './pipes/estado-empleado/estado-empleado.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    ValidarRolesDirective
+    ValidarRolesDirective,
+    EstadoEmpleadoPipe
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
-    FormsModule
+    FormsModule,
+    EstadoEmpleadoPipe
   ],
   imports: [
     CommonModule,

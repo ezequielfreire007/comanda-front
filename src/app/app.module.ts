@@ -11,12 +11,11 @@ import { SharedModule } from './shared/shared.module';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ErrorInterceptor } from './utils/ErrorInterceptor';
 import { JwtInterceptor } from './utils/JWTInterceptro';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
+
+import { AngularFireModule } from '@angular/fire';
+// import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { environment } from '../environments/environment';
 
 export function getAccessToken() {
   return localStorage.getItem('token');
@@ -33,10 +32,13 @@ export function getAccessToken() {
     BrowserAnimationsModule,
     SharedModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    // AngularFireAuthModule,
+    AngularFireStorageModule,
     [JwtModule.forRoot({
       config: {
         tokenGetter: (getAccessToken),
-        whitelistedDomains: ['http://localhost:4200', 'localhost:4200',]
+        whitelistedDomains: ['http://localhost:4200', 'localhost:4200']
       }
     })]
   ],
