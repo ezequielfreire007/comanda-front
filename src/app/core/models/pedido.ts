@@ -14,4 +14,5 @@ export interface Pedido {
     id_tipo_menu?: number;
     nombre_menu?: string;
     descripcion_estado?: string;
+    precio_menu?: string;
 }

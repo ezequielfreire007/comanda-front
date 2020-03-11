@@ -17,7 +17,12 @@ export class EmpleadoService {
     return this.http.get<Empleado[]>(`${environment.url_api}/empleado-orm/`);
   }
 
+  // Trae los datos del empleado para listar en administrador
+  getAllEmpleadosAdmin() {
+    return this.http.get<Empleado[]>(`${environment.url_api}/empleado-orm/empleado/tipo`);
+  }
+
   getEmpleado(id: string) {
-    return this.http.get(`${environment.url_api}/empleado-orm/${id}`);
+    return this.http.get(`${environment.url_api}/empleado-orm/empleado/${id}`);
   }
 }
