@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -21,13 +22,15 @@ import { EstadoEmpleadoPipe } from './pipes/estado-empleado/estado-empleado.pipe
     HeaderComponent,
     FooterComponent,
     FormsModule,
-    EstadoEmpleadoPipe
+    EstadoEmpleadoPipe,
+    ReactiveFormsModule
   ],
   imports: [
     CommonModule,
     MaterializeModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

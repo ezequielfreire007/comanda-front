@@ -14,10 +14,11 @@ import { SharedModule } from '../shared/shared.module';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { MesasComponent } from './components/mesas/mesas.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
+import { EmpleadoEditComponent } from './components/empleado-edit/empleado-edit.component';
 
 
 @NgModule({
-  declarations: [NavigateComponent, EmpleadosComponent, MesasComponent, PedidosComponent],
+  declarations: [NavigateComponent, EmpleadosComponent, MesasComponent, PedidosComponent, EmpleadoEditComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
