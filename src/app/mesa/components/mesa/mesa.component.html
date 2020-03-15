@@ -12,7 +12,7 @@
             <mat-select [(value)]="selected">
                 <mat-option>None</mat-option>
                 <mat-option *ngFor="let estado of estadoMesa" [value]="estado.id_estado_mesa">{{estado.descripcion_estado_mesa}}</mat-option>
-              </mat-select>
+            </mat-select>
         </mat-form-field>
         <input matInput placeholder="Nombre del Cliente" type="text" [(ngModel)]="nombreCliente"  [value]="nombreCliente">
     </mat-card-content>
