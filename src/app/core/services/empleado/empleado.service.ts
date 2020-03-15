@@ -25,4 +25,16 @@ export class EmpleadoService {
   getEmpleado(id: string) {
     return this.http.get(`${environment.url_api}/empleado-orm/empleado/${id}`);
   }
+
+  createEmpleado(empleado: Empleado) {
+    return this.http.post(`${environment.url_api}/empleado-orm/empleado/add`, empleado);
+  }
+
+  updateEmpleado(id: string, changes: Partial<Empleado>) {
+    return this.http.put(`${environment.url_api}/empleado-orm/empleado/${id}`, changes);
+  }
+
+  deleteEmpleado(id: string) {
+    return this.http.delete(`${environment.url_api}/empleado-orm/empleado/delete/${id}`);
+  }
 }
