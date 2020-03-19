@@ -51,12 +51,16 @@ export class EmpleadoCreateComponent implements OnInit {
 
     if (this.form.valid) {
       const empleado: Empleado = this.form.value;
+
       this.empleadoService.createEmpleado(empleado).subscribe( newEmpleado => {
         console.log(newEmpleado);
-        this.buildForm();
-        this.router.navigate(['./admin/empleados']);
       });
-    }
+
+      // redireciona a empleados
+      this.router.navigate(['./admin/empleados'])
+          .then(nav => console.log(nav))
+          .catch(error => console.log(error));
+      }
   }
 
   uploadFile(event) {
@@ -86,9 +90,5 @@ export class EmpleadoCreateComponent implements OnInit {
       estado_empleado: ['', [Validators.required]],
     });
   }
-
-  // get priceField() {
-  //   return this.form.get('price');
-  // }
 
 }

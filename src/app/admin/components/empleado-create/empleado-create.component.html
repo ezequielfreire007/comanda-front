@@ -11,13 +11,6 @@
                     </mat-form-field>
                 </div>
             </div>
-            <!-- <div class="row">
-                <div class="col-xs">
-                    <mat-form-field>
-                        <input placeholder="estado_empleado" formControlName="estado_empleado" matInput type="text">
-                    </mat-form-field>
-                </div>
-            </div> -->
             <mat-form-field>
                 <mat-label>Estado</mat-label>
                 <mat-select formControlName="estado_empleado" [(value)]="selectedValue">
@@ -34,7 +27,6 @@
                     <mat-option *ngFor="let tipo of tiposEmpleado" [value]="tipo.id_tipo">{{tipo.descripcion_tipo}}</mat-option>
                 </mat-select>
             </mat-form-field>
-     
             <div class="row">
                 <div class="col-xs">
                   <img class="img" *ngIf="(image$ | async) as foto_empleado" [src]="foto_empleado" alt="">
