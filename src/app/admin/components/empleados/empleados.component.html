@@ -24,7 +24,7 @@
         <th mat-header-cell *matHeaderCellDef>ACTIONS</th>
         <td mat-cell *matCellDef="let empleado">
             <a mat-raised-button [routerLink]="['edit', empleado.id_empleado]">Editar</a>
-            <button mat-raised-button color="warn" (click)="deleteProducts(empleado)">Eliminar</button>
+            <button mat-raised-button color="warn" (click)="deleteEmpleado(empleado)">Eliminar</button>
         </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

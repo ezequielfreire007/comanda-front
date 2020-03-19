@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-xs">
                     <mat-form-field>
-                        <input placeholder="nombre_empleado" formControlName="nombre_empleado" matInput type="text">
+                        <input placeholder="Nombre" formControlName="nombre_empleado" matInput type="text">
                     </mat-form-field>
                 </div>
             </div>
@@ -34,31 +34,13 @@
                     <mat-option *ngFor="let tipo of tiposEmpleado" [value]="tipo.id_tipo">{{tipo.descripcion_tipo}}</mat-option>
                 </mat-select>
             </mat-form-field>
-            <!-- <div class="row">
+     
+            <div class="row">
                 <div class="col-xs">
-                    <mat-form-field>
-                        <input placeholder="Precio" formControlName="price" matInput type="number">
-                    </mat-form-field>
-                    <div *ngIf="priceField.errors && priceField.dirty">
-                        <p *ngIf="priceField.hasError('price_invalid')">Este monto no debe superar los 10000</p>
-                        <p *ngIf="priceField.hasError('required')">El campo es requerido</p>
-                    </div>
+                  <img class="img" *ngIf="(image$ | async) as foto_empleado" [src]="foto_empleado" alt="">
+                  <input type="file" (change)="uploadFile($event)">
                 </div>
-            </div> -->
-            <!-- <div class="row">
-                <div class="col-xs">s
-                    <mat-form-field>
-                        <input formControlName="foto" matInput type="text">
-                    </mat-form-field>
-                </div>
-            </div> -->
-            <!-- <div class="row">
-                <div class="col-xs">
-                    <mat-form-field>
-                        <textarea placeholder="estado" formControlName="estado" matInput></textarea>           
-                    </mat-form-field>
-                </div>
-            </div> -->
+            </div>
         </mat-card-content>
         <mat-card-actions>
             <button [disabled]="form.invalid" mat-raised-button type="submit">Guardar</button>

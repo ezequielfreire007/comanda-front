@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EmpleadoService } from '../../../core/services/empleado/empleado.service';
 import { Empleado } from '../../../core/models/empleado';
+import { Router } from '@angular/router';
 import { MatTableDataSource, MatTable } from '@angular/material';
+import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-empleados',
@@ -22,7 +24,8 @@ export class EmpleadosComponent implements OnInit {
   ];
 
   constructor(
-    private empleadoService: EmpleadoService
+    private empleadoService: EmpleadoService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,6 +37,14 @@ export class EmpleadosComponent implements OnInit {
       console.log(empleados);
       this.empleados = empleados;
     });
+  }
+
+  deleteEmpleado(empleado: Empleado) {
+    this.empleadoService.deleteEmpleado(empleado.id_empleado.toString())
+      .subscribe( empleadoDelete => {
+        console.log(empleadoDelete);
+        this.fetchAll();
+      });
   }
 
 }

@@ -5,6 +5,8 @@ import { EmpleadoService } from '../../../core/services/empleado/empleado.servic
 import { TipoEmpleadoService } from '../../../core/services/tipo-empleado/tipo-empleado.service';
 import { TipoEmpleado } from '../../../core/models/tipo-empleado';
 import { Empleado } from '../../../core/models/empleado';
+import { Estado } from '../../../core/models/estado-empleado';
+
 
 @Component({
   selector: 'app-empleado-edit',
@@ -13,12 +15,18 @@ import { Empleado } from '../../../core/models/empleado';
 })
 export class EmpleadoEditComponent implements OnInit {
 
+
   form: FormGroup;
   id: string;
 
   tiposEmpleado: TipoEmpleado[] = [];
   selected: number;
-  idtipo: number;
+  selectedValue: number;
+
+  estados: Estado [] = [
+    { value: 1, descripcion: 'activo'},
+    { value: 0, descripcion: 'inactivo'},
+  ];
   // id_empleado?: number;
   //   nombre_empleado?: string;
   //   id_tipo?: number;
@@ -40,16 +48,16 @@ export class EmpleadoEditComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Toma el parametro id de la ruta y trae a ese empleado
     this.activatedRoute.params.subscribe((params: Params) => {
       console.log(params);
       this.id = params.id;
       this.empleadoService.getEmpleado(this.id).subscribe( (empleado: Empleado) => {
-        console.log(empleado);
-        this.idtipo = empleado.id_tipo;
         this.form.patchValue(empleado);
       });
     });
 
+    // Trae los tipos de empleado
     this.tipoEmpleadoService.getAll().subscribe(tipos => {
       this.tiposEmpleado = tipos;
     });
