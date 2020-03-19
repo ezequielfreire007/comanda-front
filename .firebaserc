@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "comandautn"
+  },
+  "targets": {
+    "comandautn": {
+      "hosting": {
+        "comanda-front": [
+          "comandautn"
+        ]
+      }
+    }
   }
 }
