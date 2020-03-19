@@ -13,7 +13,7 @@ import { ErrorInterceptor } from './utils/ErrorInterceptor';
 import { JwtInterceptor } from './utils/JWTInterceptro';
 
 import { AngularFireModule } from '@angular/fire';
-// import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 
@@ -33,7 +33,7 @@ export function getAccessToken() {
     SharedModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
-    // AngularFireAuthModule,
+    AngularFireAuthModule,
     AngularFireStorageModule,
     [JwtModule.forRoot({
       config: {
