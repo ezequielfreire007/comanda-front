@@ -15,10 +15,11 @@ import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { MesasComponent } from './components/mesas/mesas.component';
 import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { EmpleadoEditComponent } from './components/empleado-edit/empleado-edit.component';
+import { EmpleadoCreateComponent } from './components/empleado-create/empleado-create.component';
 
 
 @NgModule({
-  declarations: [NavigateComponent, EmpleadosComponent, MesasComponent, PedidosComponent, EmpleadoEditComponent],
+  declarations: [NavigateComponent, EmpleadosComponent, MesasComponent, PedidosComponent, EmpleadoEditComponent, EmpleadoCreateComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
