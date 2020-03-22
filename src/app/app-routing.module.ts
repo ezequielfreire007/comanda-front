@@ -47,6 +47,10 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
+    path: 'cliente',
+    loadChildren: () => import('./cliente/cliente.module').then(m => m.ClienteModule)
+  },
+  {
     path: 'admin',
     canActivate: [AuthGuard],
     data: { roles : [5]},
