@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PedidoService } from '../../../core/services/pedido/pedido.service';
 import { Empleado } from 'src/app/core/models/empleado';
 import { MatTableDataSource, MatTable } from '@angular/material';

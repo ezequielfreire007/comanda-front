@@ -3,7 +3,6 @@ import { EmpleadoService } from '../../../core/services/empleado/empleado.servic
 import { Empleado } from '../../../core/models/empleado';
 import { Router } from '@angular/router';
 import { MatTableDataSource, MatTable } from '@angular/material';
-import { ConditionalExpr } from '@angular/compiler';
 
 @Component({
   selector: 'app-empleados',
