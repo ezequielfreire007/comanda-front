@@ -10,19 +10,22 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MaterializeModule } from '../materialize/materialize.module';
 import { ValidarRolesDirective } from './directives/validar-roles/validar-roles.directive';
 import { EstadoEmpleadoPipe } from './pipes/estado-empleado/estado-empleado.pipe';
+import { ValorMayusculaPipe } from './pipes/valor-mayuscula/valor-mayuscula.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     ValidarRolesDirective,
-    EstadoEmpleadoPipe
+    EstadoEmpleadoPipe,
+    ValorMayusculaPipe
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     FormsModule,
     EstadoEmpleadoPipe,
+    ValorMayusculaPipe,
     ReactiveFormsModule
   ],
   imports: [
