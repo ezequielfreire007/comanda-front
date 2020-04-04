@@ -1,0 +1,58 @@
+.home {
+    font-family: 'Pacifico', cursive;
+}
+
+.mt-4{
+    margin-top: 4px;
+}
+
+.navegador {
+    background-color: #6c757d;
+}
+
+.text-mov {
+    color: white;
+}
+
+.text-mov:hover {
+    color: #c2c3c4;
+}
+
+.perfil-img {
+    width: 73px;
+    height: 63px;
+    margin-right: 12px;
+    background-color: #6c757d;
+}
+
+.panel {
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.mesa {
+    margin-top: 10px;
+}
+
+.home .boton {
+    font-size: 80%;
+    border-radius: 5rem;
+    border-color: #6c757d;
+    letter-spacing: .1rem;
+    font-weight: bold;
+    padding: 1rem;
+    transition: all 0.2s;
+}
+
+/*media query establece el tamaño para celulares*/
+@media(min-width: 576px){
+    .perfil-img {
+        width: 73px;
+        height: 63px;
+        margin-top: 12px;
+        margin-right: 25px;
+        background-color: #6c757d;
+    }
+
+}
