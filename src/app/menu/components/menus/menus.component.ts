@@ -89,6 +89,7 @@ export class MenusComponent implements OnInit {
     });
   }
 
+  // lo paso al cliente esto se tiene que dejar de usar recodatorio para cuando vuelva a mozo
   aleatorio(inferior, superior) {
     const resAleatorio = Math.floor((Math.random() * (superior - inferior + 1)) + inferior);
     return resAleatorio.toString();
