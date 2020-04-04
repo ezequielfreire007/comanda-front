@@ -1,0 +1,45 @@
+
+
+<!-- Modal -->
+<div class="registrar">
+    <div class="modal-dialog modal-dialog-centered modal" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Registrate</h5>
+          <button type="button" (click)="cancelar()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" (ngSubmit)="registrar($event)">
+            <div class="form-row">
+              <div class="form-group col">
+                <div class="input-group mb-3">
+                  <input formControlName="nombre"  type="text" class="form-control datos" placeholder="E-mail" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col">
+                <div class="input-group mb-3">
+                  <input formControlName="password"  type="password" class="form-control datos" placeholder="******" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="cancelar()" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn" [disabled]="form.invalid" type="submit">Registrar</button>
+            </div>
+          </form>
+          <!-- <div class="alert alert-warning" role="alert">
+            Recibirás un correo de confirmación si sales sorteado
+          </div> -->
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="cancelar()" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn" (click)="registrar()">Registrar</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+  <!-- /Modal -->
