@@ -22,12 +22,21 @@ export class MesaService {
     return this.http.get(`${environment.url_api}/mesa-orm/${id}`);
   }
 
+
+  getAllMesasAbiertas(data: object) {
+    return this.http.post<Mesa[]>(`${environment.url_api}/mesa-orm/mesa/mesas-abiertas`, data);
+  }
+
   // createProduct(mesa: Mesa) {
   //   return this.http.post(`${environment.url_api}/api/products`, product);
   // }
 
   updateMesa(id: number, changes: Partial<Mesa>) {
     return this.http.put(`${environment.url_api}/mesa-orm/mesa/${id}`, changes);
+  }
+
+  updateMesaCliente(id: number, changes: Partial<Mesa>) {
+    return this.http.put(`${environment.url_api}/mesa-orm/mesa/cliente/${id}`, changes);
   }
 
   // deleteProduct(id: string) {
