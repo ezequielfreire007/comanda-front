@@ -6,6 +6,11 @@ import { AuthGuard } from './guard/auth.guard';
 const routes: Routes = [
   {
     path: '',
+    // redirectTo: '',
+    loadChildren: () => import('./cliente/cliente.module').then(m => m.ClienteModule)
+  },
+  {
+    path: '',
     component: LayoutComponent,
     children: [
       { path: '', redirectTo: 'pedido', pathMatch: 'full' },
@@ -45,10 +50,6 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
-  },
-  {
-    path: 'cliente',
-    loadChildren: () => import('./cliente/cliente.module').then(m => m.ClienteModule)
   },
   {
     path: 'admin',

@@ -15,7 +15,7 @@ import { MaterializeModule } from '../materialize/materialize.module';
     CommonModule,
     ClienteRoutingModule,
     SharedModule,
-    // MaterializeModule
+    MaterializeModule
   ]
 })
 export class ClienteModule { }

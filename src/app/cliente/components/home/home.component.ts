@@ -14,7 +14,7 @@ import { Router } from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-  @ViewChild('producTable', {static: false}) table: MatTable<Pedido>;
+  @ViewChild('pedidoTable', {static: false}) table: MatTable<Pedido>;
   displayedColumns: string[] = [
     'id_pedidos',
     'codigo_pedido',
@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
   mesa: Mesa;
   select: number;
   user: User;
-  @Output() logout: EventEmitter<any> = new EventEmitter();
+  // @Output() logout: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private mesaService: MesaService,
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
     this.mesa = this.mesas.find( mesa => mesa.id_mesa === id);
     this.mesa.descripcion_estado_mesa = 'esperando';
     this.updateMesaEstado(id);
-
+    this.updateCodigoMesa(id);
   }
 
   updateMesaEstado(id: number) {
@@ -78,10 +78,27 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  updateCodigoMesa() {
-    // actualizo el codigo de la mesa
+  fetchPedidos() { // falta hacer que traeiga el pedido por orden pero primero se tiene que hacer lo del mozo
+    const date = new Date().toISOString().slice(0, 10);
+    const dateSearch = {
+      fecha_serch: date,
+    };
+    this.pedidoService.getPedidoFecha(dateSearch).subscribe(pedidos => {
+      console.log(pedidos);
+      this.pedidos = pedidos;
+    });
+  }
+
+  updateCodigoMesa(id: number) {
+    // genero el codigo del cliente
     const date = new Date().toISOString().slice(0, 10);
     const codAleatorio = `${this.aleatorio(100, 900)}-${date}`;
+    console.log(codAleatorio);
+    const dato = {
+      codigo_mesa: codAleatorio
+    };
+    // actualizo el codigo de la mesa
+    this.mesaService.updateMesaCodigo(id, dato).subscribe( mesa => console.log(mesa));
   }
 
   // genera un codigo aleatorio que luego se debe guardar en la base
@@ -93,8 +110,8 @@ export class HomeComponent implements OnInit {
   salir() {
     // elimina el usuairo en localstorage y vuelve al login
     localStorage.removeItem('user');
-    this.router.navigate(['./cliente']);
-    this.logout.emit('logout');
+    this.router.navigate(['./']);
+    // this.logout.emit('logout');
   }
 
 }

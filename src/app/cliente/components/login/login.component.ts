@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutgoogleService } from '../../../core/services/authgoogle/authgoogle.service';
 import { User } from '../../../core/models/userSocial';
-import { Login } from "../../../core/models/login";
+import { Login } from '../../../core/models/login';
 import { Router } from '@angular/router';
 import { AuthfireService } from '../../../core/services/authfire/authfire.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
         .then( res => {
           this.userSocial = res.user.providerData[0];
           localStorage.setItem('user', JSON.stringify(this.userSocial));
-          this.router.navigate(['./cliente/home']);
+          this.router.navigate(['./home']);
         })
         .catch( error => {
           this.openSnackBar(error.message, 'ok');
@@ -73,12 +73,12 @@ export class LoginComponent implements OnInit {
       // Guardo los datos necesarios del usuario
       this.userSocial = user.providerData[0];
       localStorage.setItem('user', JSON.stringify(this.userSocial));
-      this.router.navigate(['./cliente/home']);
+      this.router.navigate(['./home']);
     });
   }
 
   registrar() {
-    this.router.navigate(['./cliente/registrar']);
+    this.router.navigate(['./registrar']);
   }
 
   // validacion del formulario
