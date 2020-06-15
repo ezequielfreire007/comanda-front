@@ -39,6 +39,10 @@ export class MesaService {
     return this.http.put(`${environment.url_api}/mesa-orm/mesa/cliente/${id}`, changes);
   }
 
+  updateMesaCodigo(id: number, changes: Partial<Mesa>) {
+    return this.http.put(`${environment.url_api}/mesa-orm/mesa/cliente/codigo/${id}`, changes);
+  }
+
   // deleteProduct(id: string) {
   //   return this.http.delete(`${environment.url_api}/api/products/${id}`);
   // }

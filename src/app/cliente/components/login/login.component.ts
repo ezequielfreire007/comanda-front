@@ -89,6 +89,11 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  empleadosLogin() {
+    console.log('hola empledo');
+    this.router.navigate(['./auth/login']);
+  }
+
   // mensaje de respuesta al usuario
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {

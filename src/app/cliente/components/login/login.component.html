@@ -6,7 +6,9 @@
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
           <div class="card card-signin my-5">
             <div class="card-body">
-              <h5 class="card-title text-center">Hola, entra a comer 👩‍🍳🧑‍👨‍🍳</h5>
+              <h5 class="card-title text-center">Hola, entra a comer 
+                <a (click)="empleadosLogin()">👩‍🍳🧑‍👨‍🍳</a>
+              </h5>
               <form [formGroup]="form" (ngSubmit)="loginMail($event)" class="form-signin">
                 <!-- <div class="form-label-group">
                   <input formControlName="nombre" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
