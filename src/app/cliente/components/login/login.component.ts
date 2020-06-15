@@ -37,13 +37,22 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    //sin modificar
+    // this.autgoogleService.login()
+    //   .then( res => {
+    //     console.log('success')
+    //     console.log(res);
+    //   })
+    //   .catch( err => this.openSnackBar( err.message, 'ok'));
+
     this.autgoogleService.login()
       .then( res => {
         console.log('success')
+        this.showSpinner = true;
+        this.dataUser(res.user.providerData[0]);
       })
-      .catch( err => this.openSnackBar( err.message, 'ok'));
-    this.showSpinner = true;
-    this.hasUser();
+      .catch( err => this.openSnackBar( err.message, 'ok'))
+      .finally(() => this.hasUser());
   }
 
   loginMail(event: Event) {
@@ -72,12 +81,15 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  dataUser(data) {
+    localStorage.setItem('user', JSON.stringify(data));
+  }
+
   hasUser() {
     this.autgoogleService.hasUser().subscribe( user => {
-      // Guardo los datos necesarios del usuario
-      this.userSocial = user.providerData[0];
-      localStorage.setItem('user', JSON.stringify(this.userSocial));
-      this.router.navigate(['./home']);
+      if ( user ) {
+        this.router.navigate(['./home']);
+      }
     });
   }
 
