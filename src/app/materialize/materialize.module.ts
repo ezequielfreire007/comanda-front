@@ -22,6 +22,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { LayoutModule } from '@angular/cdk/layout';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 
 
@@ -47,7 +48,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatStepperModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    LayoutModule
+    LayoutModule,
+    MatProgressBarModule
   ],
   exports: [
     MatToolbarModule,
@@ -68,7 +70,8 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatStepperModule,
     MatSnackBarModule,
     MatFormFieldModule,
-    LayoutModule
+    LayoutModule,
+    MatProgressBarModule
   ]
 })
 export class MaterializeModule { }

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   userSocial: User;
   uerLogin: Login;
   form: FormGroup;
+  showSpinner = false;
 
   constructor(
     private autgoogleService: AutgoogleService,
@@ -37,14 +38,17 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.autgoogleService.login()
-      .then( res => console.log('success'))
+      .then( res => {
+        console.log('success')
+      })
       .catch( err => this.openSnackBar( err.message, 'ok'));
-
+    this.showSpinner = true;
     this.hasUser();
   }
 
   loginMail(event: Event) {
     if (this.form.valid) {
+      this.showSpinner = true;
       const dataLogin: Login = {
         nombre_empleado : `${this.form.get('nombre').value}`,
         clave_empleado: `${this.form.get('password').value}`
@@ -96,6 +100,7 @@ export class LoginComponent implements OnInit {
 
   // mensaje de respuesta al usuario
   openSnackBar(message: string, action: string) {
+    this.showSpinner = false;
     this.snackBar.open(message, action, {
       duration: 2000,
     });
