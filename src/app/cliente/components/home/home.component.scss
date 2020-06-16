@@ -8,12 +8,21 @@
     height: 100%;
 }
 
+.img-mesa {
+    width: 100%;
+    height: 250px;
+}
+
 .mt-4{
     margin-top: 4px;
 }
 
 .navegador {
     background-color: #6c757d;
+}
+
+.titulo-bienvenida {
+    color: #DE4701;
 }
 
 .text-mov {
@@ -42,13 +51,21 @@
 }
 
 .home .boton {
-    font-size: 80%;
+    // font-size: 80%;
     border-radius: 5rem;
     border-color: #6c757d;
     letter-spacing: .1rem;
     font-weight: bold;
     padding: 1rem;
     transition: all 0.2s;
+    margin: 5px;
+}
+
+.boton-size {
+    color: gray;
+    font-size: 36px;
+    width: 500px;
+    height: 200px;
 }
 
 .pedido-table {
