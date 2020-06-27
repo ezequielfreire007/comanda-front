@@ -6,9 +6,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <img *ngIf="user.photoURL" class="perfil-img border rounded-circle" [src]="user.photoURL" alt="">
+            <img *ngIf="user.photoURL" class="perfil-img border-img  rounded-circle" [src]="user.photoURL" alt="">
             <!-- <img *ngIf="!user.photoURL" class="perfil-img border rounded-circle" src="https://firebasestorage.googleapis.com/v0/b/comandautn.appspot.com/o/p11.jpg?alt=media&token=9fcfdc0e-1b26-408e-8100-d1bcc25c6bc7" alt=""> -->
-            <img *ngIf="!user.photoURL" class="perfil-img border rounded-circle" src="./assets/img/perfil.jpg" alt="">
+            <img *ngIf="!user.photoURL" class="perfil-img border-img  rounded-circle" src="./assets/img/perfil.jpg" alt="">
             <a *ngIf="user.displayName" class="navbar-brand text-mov">Hola {{user.displayName}}</a>
             <a *ngIf="!user.displayName" class="navbar-brand text-mov">Hola {{user.email}}</a>
 
