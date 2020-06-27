@@ -11,6 +11,9 @@ import { MaterializeModule } from '../materialize/materialize.module';
 import { ValidarRolesDirective } from './directives/validar-roles/validar-roles.directive';
 import { EstadoEmpleadoPipe } from './pipes/estado-empleado/estado-empleado.pipe';
 import { ValorMayusculaPipe } from './pipes/valor-mayuscula/valor-mayuscula.pipe';
+import { GreenDirective } from './directives/color-estado-mesa/green.directive';
+import { BlueDirective } from './directives/color-estado-mesa/blue.directive';
+import { OrangeDirective } from './directives/color-estado-mesa/orange.directive';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { ValorMayusculaPipe } from './pipes/valor-mayuscula/valor-mayuscula.pipe
     FooterComponent,
     ValidarRolesDirective,
     EstadoEmpleadoPipe,
-    ValorMayusculaPipe
+    ValorMayusculaPipe,
+    GreenDirective,
+    BlueDirective,
+    OrangeDirective
   ],
   exports: [
     HeaderComponent,
@@ -26,7 +32,10 @@ import { ValorMayusculaPipe } from './pipes/valor-mayuscula/valor-mayuscula.pipe
     FormsModule,
     EstadoEmpleadoPipe,
     ValorMayusculaPipe,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GreenDirective,
+    BlueDirective,
+    OrangeDirective
   ],
   imports: [
     CommonModule,
