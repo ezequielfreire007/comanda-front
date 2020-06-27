@@ -40,7 +40,7 @@
     background-color: #6c757d;
 }
 
-.border-img {
+.border-home {
     border: 5px solid #dee2e6;
 }
 
@@ -56,8 +56,10 @@
 
 .home .boton {
     // font-size: 80%;
+    border: 5px solid #dee2e6;
     border-radius: 5rem;
-    border-color: #6c757d;
+    // border-color: #6c757d;
+    border-color: #dee2e6;
     letter-spacing: .1rem;
     font-weight: bold;
     padding: 1rem;
