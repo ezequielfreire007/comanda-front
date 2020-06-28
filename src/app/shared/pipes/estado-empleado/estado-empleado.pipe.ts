@@ -7,12 +7,23 @@ export class EstadoEmpleadoPipe implements PipeTransform {
 
   transform(value: any): string {
     console.log(value);
-    if (value === 1) {
-      return 'activo';
-    } else {
-      return 'inactivo';
+    switch (value) {
+      case 0:
+        return 'suspendido';
+        break;
+      case 1:
+        return 'activo';
+        break;
+      case 2:
+        return 'vacaciones';
+        break;
+      case 3:
+        return 'licencia';
+      default:
+        return null;
+        break;
     }
-    return null;
+
   }
 
 }

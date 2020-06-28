@@ -4,20 +4,48 @@
     </div>
     <mat-card-header>
         <mat-card-title>{{ mesa.codigo_mesa}}</mat-card-title>
-        <mat-card-subtitle>{{ mesa.descripcion_estado_mesa }}</mat-card-subtitle>
+
+        <div [ngSwitch]="mesa.descripcion_estado_mesa">
+            <mat-card-subtitle appGreen *ngSwitchCase="'esperando'"> 
+               <h4 appGreen>{{ mesa.descripcion_estado_mesa }}</h4>
+            </mat-card-subtitle>
+            <mat-card-subtitle *ngSwitchCase="'abierta'">
+                <h4>{{ mesa.descripcion_estado_mesa }}</h4>
+            </mat-card-subtitle>
+            <mat-card-subtitle appOrange *ngSwitchCase="'pidiendo la cuenta'">
+                <h4 appOrange>{{ mesa.descripcion_estado_mesa }}</h4>
+            </mat-card-subtitle>
+            <mat-card-subtitle appBlue *ngSwitchCase="'comiendo'">
+                <h4 appBlue>{{ mesa.descripcion_estado_mesa }}</h4>
+            </mat-card-subtitle>
+            <mat-card-subtitle appRed *ngSwitchCase="'cerrada'">
+                <h4 appRed>{{ mesa.descripcion_estado_mesa }}</h4>
+            </mat-card-subtitle>
+            <p *ngSwitchDefault>no hay match</p>
+        </div>
+
     </mat-card-header>
-    <mat-card-content>
+
+    <!-- <mat-card-content>
         <mat-form-field>
             <mat-label>Estado de la mesa</mat-label>
             <mat-select [(value)]="selected">
                 <mat-option>None</mat-option>
-                <mat-option *ngFor="let estado of estadoMesa" [value]="estado.id_estado_mesa">{{estado.descripcion_estado_mesa}}</mat-option>
+                <mat-option 
+                    *ngFor="let estado of estadoMesa" 
+                    [value]="estado.id_estado_mesa">
+                    {{estado.descripcion_estado_mesa}}
+                </mat-option>
             </mat-select>
         </mat-form-field>
-        <input matInput placeholder="Nombre del Cliente" type="text" [(ngModel)]="nombreCliente"  [value]="nombreCliente">
-    </mat-card-content>
+    </mat-card-content> -->
+
     <mat-card-actions>
-        <a mat-raised-button color="primary" (click)="selectMesa()" [routerLink]="['/menu']">Seleccionar</a>    
-        <a mat-raised-button color="primary" (click)="cobrarCuenta()" [routerLink]="['/ticket']">Cobrar</a>    
+        <a mat-raised-button color="primary" 
+            (click)="selectMesa()" 
+            [routerLink]="['/menu']">
+            Seleccionar
+        </a>    
+        <!-- <a mat-raised-button color="primary" (click)="cobrarCuenta()" [routerLink]="['/ticket']">Cobrar</a>   -->
     </mat-card-actions>
 </mat-card>
