@@ -24,18 +24,11 @@ export class EmpleadoEditComponent implements OnInit {
   selectedValue: number;
 
   estados: Estado [] = [
+    { value: 3, descripcion: 'licencia'},
+    { value: 2, descripcion: 'vacaciones'},
     { value: 1, descripcion: 'activo'},
-    { value: 0, descripcion: 'inactivo'},
+    { value: 0, descripcion: 'suspendido'},
   ];
-  // id_empleado?: number;
-  //   nombre_empleado?: string;
-  //   id_tipo?: number;
-  //   descripcion_tipo?: string;
-  //   clave_empleado?: string;
-  //   estado_empleado?: string;
-  //   foto_empleado?: string;
-  //   created_at?: Date;
-  //   updated_at?: Date;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -79,6 +72,7 @@ export class EmpleadoEditComponent implements OnInit {
   private buildForm() {
     this.form = this.formBuilder.group({
       nombre_empleado: ['', [Validators.required]],
+      clave_empleado: ['', [Validators.required]],
       id_tipo: ['', [Validators.required]],
       foto_empleado: [''],
       estado_empleado: ['', [Validators.required]],

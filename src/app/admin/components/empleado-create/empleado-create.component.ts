@@ -22,12 +22,26 @@ export class EmpleadoCreateComponent implements OnInit {
   form: FormGroup;
   image$: Observable<any>;
   tiposEmpleado: TipoEmpleado[] = [];
+  id: string;
+  selected: number;
+  selectedValue: number;
 
   estados: Estado [] = [
+    { value: 3, descripcion: 'licencia'},
+    { value: 2, descripcion: 'vacaciones'},
     { value: 1, descripcion: 'activo'},
-    { value: 0, descripcion: 'inactivo'},
+    { value: 0, descripcion: 'suspendido'}
   ];
 
+    //  id_empleado?: number;
+  //   nombre_empleado?: string;
+  //   id_tipo?: number;
+  //   descripcion_tipo?: string;
+  //   clave_empleado?: string;
+  //   estado_empleado?: string;
+  //   foto_empleado?: string;
+  //   created_at?: Date;
+  //   updated_at?: Date;
 
   constructor(
     private formBuilder: FormBuilder,
