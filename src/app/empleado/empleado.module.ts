@@ -5,6 +5,7 @@ import { EmpleadoRoutingModule } from './empleado-routing.module';
 import { EmpleadoComponent } from './components/empleado/empleado.component';
 import { EmpleadosComponent } from './components/empleados/empleados.component';
 import { MaterializeModule } from '../materialize/materialize.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { MaterializeModule } from '../materialize/materialize.module';
   imports: [
     CommonModule,
     EmpleadoRoutingModule,
-    MaterializeModule
+    MaterializeModule,
+    SharedModule
   ]
 })
 export class EmpleadoModule { }
