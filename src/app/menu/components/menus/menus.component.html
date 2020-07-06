@@ -2,6 +2,7 @@
   <!-- TODO agregar select de mesas -->
   <mat-card class="mg-5px">
     <mat-card-content>
+      <h4>Primero seleccione una mesa</h4>
       <section class="mesas-section">
         <label class="mesas-margin">MESAS:</label>
         <mat-radio-group ([ngModel])="mesaSeleccionada">
@@ -52,7 +53,7 @@
   
  
   <!-- grid de pedidos -->
-  <div class="container">
+  <div *ngIf="mesaSeleccionada" class="container">
 
     <div class="element-grid">
         <!-- grilla de menu -->
