@@ -8,6 +8,10 @@ import { MesaService } from '../../../core/services/mesa/mesa.service';
 import { Mesa } from '../../../core/models/mesa';
 
 
+import { JwtHelperService } from '@auth0/angular-jwt';
+
+
+
 @Component({
   selector: 'app-pedidos-list',
   templateUrl: './pedidos-list.component.html',
@@ -18,6 +22,7 @@ export class PedidosListComponent implements OnInit {
   @ViewChild('pedidoTable', {static: false}) table: MatTable<Pedido>;
   pedidos: Pedido[] = [];
   empleado: Empleado;
+  helper = new JwtHelperService();
 
   displayedColumns: string[] = [
         'id_pedidos',
@@ -36,9 +41,12 @@ export class PedidosListComponent implements OnInit {
     private router: Router,
     private mesaService: MesaService
   ) {
-    this.empleado = JSON.parse(localStorage.getItem('empleado'));
+    this.empleado =  this.helper.decodeToken(localStorage.getItem('token'));
+          // localStorage.setItem('empleado', JSON.stringify(decodeToken.empleado));
+    // this.empleado = JSON.parse(localStorage.getItem('empleado'));
     if (!this.empleado) {
-      this.router.navigate(['/mesa']);
+      console.log(`donde regresaba a mesas porque no esta el pedido`)
+      // this.router.navigate(['/mesa']);
     }
   }
 
