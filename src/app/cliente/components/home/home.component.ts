@@ -78,6 +78,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // esto tiene que ser igual a lo que ve el mozo
   fetchPedidos() { // falta hacer que traeiga el pedido por orden pero primero se tiene que hacer lo del mozo
     const date = new Date().toISOString().slice(0, 10);
     const dateSearch = {
