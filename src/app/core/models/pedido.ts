@@ -1,6 +1,6 @@
 export interface Pedido {
     id_pedidos?: number;
-    codigo_pedido?: string;
+    codigo_pedido?: string; // este es el codigo de mesa
     id_estado?: number;
     fecha_pedido?: string;
     hora_inicio_pedido?: string;
@@ -14,5 +14,5 @@ export interface Pedido {
     id_tipo_menu?: number;
     nombre_menu?: string;
     descripcion_estado?: string;
-    precio_menu?: string;
+    precio_menu?: number;
 }
