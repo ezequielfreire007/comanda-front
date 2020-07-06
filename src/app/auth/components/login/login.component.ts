@@ -45,8 +45,11 @@ export class LoginComponent implements OnInit {
           // seteo el token en local storage
           localStorage.setItem('token', res['token']);
           // decodifico el token y tomo la data para que este disponible
-          const decodeToken =  this.helper.decodeToken(localStorage.getItem('token'));
-          localStorage.setItem('empleado', JSON.stringify(decodeToken.empleado));
+
+          // este es el token para el empleado pero capaz lo saque del login (VOLAR)
+          // const decodeToken =  this.helper.decodeToken(localStorage.getItem('token'));
+          // localStorage.setItem('empleado', JSON.stringify(decodeToken.empleado));
+
           // redireciono a pedido todos tienen acceso a este boton
           this.router.navigate(['/pedido']);
         } else {
