@@ -1,0 +1,35 @@
+.mesas-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.mg-5px {
+  margin: 5px;;
+}
+
+.mesas-margin {
+    margin: 0 10px;
+}
+
+// cambia la grilla general de la app
+// .element-grid {
+//   display: grid;
+//   grid-template-columns: repeat(1, 1fr);
+//   grid-gap: 50px 20px;
+// }
+
+
+// /*media query establece el tamaño para celulares*/
+// @media(min-width: 576px){
+//   .element-grid {
+//       grid-template-columns: repeat(2, 1fr);
+//   }
+
+//   .container{
+//       max-width: 1110px;
+//       padding-right: 16px;
+//       padding-left: 16px;
+//   }
+// }
