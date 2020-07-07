@@ -21,6 +21,10 @@ export class PedidoService {
     return this.http.post<Pedido[]>(`${environment.url_api}/pedido-orm/pedido/fecha`, data);
   }
 
+  getPedidoFechaMesa(data: object) {
+    return this.http.post<Pedido[]>(`${environment.url_api}/pedido-orm/pedido/fecha-mesa`, data);
+  }
+
   getPedido(id: string) {
     return this.http.get(`${environment.url_api}/pedido-orm/pedido/${id}`);
   }
