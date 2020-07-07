@@ -59,6 +59,7 @@ export class MenusComponent implements OnInit {
     this.cuenta = 0;
     // obtengo datos del empleado en el token
     this.empleado =  this.helper.decodeToken(localStorage.getItem('token')).empleado;
+    console.log(this.empleado)
   }
 
   // primero tengo que seleccionar la mesa
@@ -105,7 +106,6 @@ export class MenusComponent implements OnInit {
                        horaEntrega.getMinutes().toString() + ':' +
                        horaEntrega.getSeconds().toString();
 
-
     // Seteo los datos al pedido
     this.pedido.fecha_pedido = this.horaInicio;
     this.pedido.codigo_pedido = this.mesaSeleccionada.codigo_mesa;
@@ -118,14 +118,8 @@ export class MenusComponent implements OnInit {
     this.temPedidos.push(this.pedido);
     this.pedidos = JSON.parse(JSON.stringify(this.temPedidos));
     this.totalPedido();
-   // this.pedidos.push(this.pedido);
-    // this.pedidos.push(JSON.parse(JSON.stringify(this.temPedidos)));
-    // console.log(`lista de pedidos`)
-    // console.log(this.pedidos)
-    // console.log(`lista de pedidos temp`)
-    // console.log(this.temPedidos)
-    
-   // this.createPedido(this.pedido);
+
+    this.createPedido(this.pedido);
 
   }
 
