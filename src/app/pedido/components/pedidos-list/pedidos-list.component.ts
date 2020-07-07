@@ -41,7 +41,8 @@ export class PedidosListComponent implements OnInit {
     private router: Router,
     private mesaService: MesaService
   ) {
-    this.empleado =  this.helper.decodeToken(localStorage.getItem('token'));
+    this.empleado =  this.helper.decodeToken(localStorage.getItem('token')).empleado;
+    console.log(this.empleado);
           // localStorage.setItem('empleado', JSON.stringify(decodeToken.empleado));
     // this.empleado = JSON.parse(localStorage.getItem('empleado'));
     if (!this.empleado) {
