@@ -25,7 +25,6 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -50,7 +49,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatFormFieldModule,
     LayoutModule,
     MatProgressBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   exports: [
     MatToolbarModule,
