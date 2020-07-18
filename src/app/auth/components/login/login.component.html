@@ -30,6 +30,7 @@
                         <button [disabled]="form.invalid" mat-raised-button type="submit">Ingresar</button>
                   </mat-card-actions>
                 </mat-card>
+                <mat-progress-bar [color]="colorSpinner" *ngIf="showSpinner" mode="indeterminate"></mat-progress-bar>
               </form>
         </div>
         <div></div>

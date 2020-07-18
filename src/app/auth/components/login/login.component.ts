@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../core/services/auth/auth.service';
 import { Login } from 'src/app/core/models/login';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ThemePalette } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-login',
@@ -19,6 +21,8 @@ export class LoginComponent implements OnInit {
   error: boolean;
   errorMessage: string;
   helper = new JwtHelperService();
+  showSpinner = false;
+  colorSpinner: ThemePalette = 'accent';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,6 +42,7 @@ export class LoginComponent implements OnInit {
   loginUser(event: Event) {
     this.error = false;
     if (this.form.valid) {
+      this.showSpinner = true;
       // tslint:disable-next-line: max-line-length
       const dataLogin: Login = { nombre_empleado : `${this.form.get('nombre').value}`, clave_empleado: `${this.form.get('password').value}`};
       this.auth.loginEmpleado(dataLogin).subscribe( res => {
