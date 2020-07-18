@@ -4,6 +4,7 @@ import { Empleado } from 'src/app/core/models/empleado';
 import { MatTableDataSource, MatTable } from '@angular/material';
 import { Pedido } from 'src/app/core/models/pedido';
 
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-pedidos',
@@ -15,6 +16,7 @@ export class PedidosComponent implements OnInit {
   @ViewChild('pedidoTable', {static: false}) table: MatTable<Pedido>;
   pedidos: Pedido[] = [];
   empleado: Empleado;
+  helper = new JwtHelperService();
 
   displayedColumns: string[] = [
     'id_pedidos',
@@ -30,7 +32,7 @@ export class PedidosComponent implements OnInit {
   constructor(
     private pedidoService: PedidoService
   ) {
-    this.empleado = JSON.parse(localStorage.getItem('empleado'));
+    this.empleado =  this.helper.decodeToken(localStorage.getItem('token')).empleado;
   }
 
   ngOnInit() {
