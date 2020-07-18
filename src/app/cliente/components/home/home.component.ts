@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   mesa: Mesa;
   select: number;
   user: User;
-  codigoMesa:string;
+  codigoMesa: string;
   // @Output() logout: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -59,7 +59,6 @@ export class HomeComponent implements OnInit {
     };
     this.mesaService.getAllMesasAbiertas(dateSearch).subscribe( mesas => {
       this.mesas = mesas;
-      console.log(mesas);
     });
 
   }
@@ -85,14 +84,14 @@ export class HomeComponent implements OnInit {
   // esto tiene que ser igual a lo que ve el mozo
   fetchPedidos() { // falta hacer que traeiga el pedido por orden pero primero se tiene que hacer lo del mozo
     const date = new Date().toISOString().slice(0, 10);
-    console.log(date)
-    console.log(this.mesa)
+    // console.log(date)
+    // console.log(this.mesa)
     const dateSearch = {
       codigo_pedido: this.mesa.codigo_mesa,
       fecha_serch: date,
     };
     this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
-      console.log(pedidos);
+      // console.log(pedidos);
       this.pedidos = pedidos;
     });
   }
@@ -106,9 +105,9 @@ export class HomeComponent implements OnInit {
     };
     // actualizo el codigo de la mesa
     this.mesaService.updateMesaCodigo(id, dato).subscribe( mesa => console.log(mesa));
-    this.mesaService.getMesa(this.select.toString()).subscribe(mesa => {
-      this.mesa = mesa;
-    });
+    // this.mesaService.getMesa(this.select.toString()).subscribe(mesa => {
+    //   this.mesa = mesa;
+    // });
   }
 
   // genera un codigo aleatorio que luego se debe guardar en la base
