@@ -6,6 +6,9 @@ import { Empleado } from '../../../core/models/empleado';
 import { Router } from '@angular/router';
 import { MesaService } from '../../../core/services/mesa/mesa.service';
 import { Mesa } from '../../../core/models/mesa';
+import { Fichada } from 'src/app/core/models/fichada';
+import { FichadaService } from 'src/app/core/services/fichada/fichada.service';
+
 
 
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -39,7 +42,8 @@ export class PedidosListComponent implements OnInit {
   constructor(
     private pedidoService: PedidoService,
     private router: Router,
-    private mesaService: MesaService
+    private mesaService: MesaService,
+    private fichadaService: FichadaService
   ) {
     this.empleado =  this.helper.decodeToken(localStorage.getItem('token')).empleado;
     console.log(this.empleado);
@@ -49,11 +53,13 @@ export class PedidosListComponent implements OnInit {
       console.log(`donde regresaba a mesas porque no esta el pedido`)
       // this.router.navigate(['/mesa']);
     }
+
   }
 
   ngOnInit() {
     // this.fetchPedidos();
     this.fetchPedidosFecha();
+    // fichada de empleado
   }
 
   fetchPedidos() {
@@ -76,7 +82,6 @@ export class PedidosListComponent implements OnInit {
       this.pedidos = pedidos;
     });
   }
-
 
   tomarPedido(pedido: Pedido) {
     switch (this.empleado.id_tipo) {
@@ -131,6 +136,24 @@ export class PedidosListComponent implements OnInit {
     };
     this.mesaService.updateMesa(pedido.id_mesa, updateMesa).subscribe(mesa => {
       console.log(mesa);
+    });
+  }
+
+  ficharEmpleado() {
+    const horaInicio = new Date();
+    const fecha = horaInicio.toISOString().slice(0, 10);
+    const hora =  horaInicio.getHours().toString() + ':' +
+                  horaInicio.getMinutes().toString() + ':' +
+                  horaInicio.getSeconds().toString();
+
+    const fichada = {
+      id_empleado: this.empleado.id_empleado,
+      ingreso_fichada: fecha + ' ' + hora
+    };
+
+    this.fichadaService.createFichada(fichada).subscribe(createFichada => {
+      console.log(createFichada);
+      localStorage.setItem('fichada', JSON.stringify(createFichada));
     });
   }
 
