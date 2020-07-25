@@ -66,6 +66,7 @@ export class EmpleadoCreateComponent implements OnInit {
     if (this.form.valid) {
       const empleado: Empleado = this.form.value;
 
+      // console.warn(empleado)
       this.empleadoService.createEmpleado(empleado).subscribe( newEmpleado => {
         console.log(newEmpleado);
       });
@@ -74,6 +75,7 @@ export class EmpleadoCreateComponent implements OnInit {
       this.router.navigate(['./admin/empleados'])
           .then(nav => console.log(nav))
           .catch(error => console.log(error));
+
       }
   }
 
@@ -101,6 +103,7 @@ export class EmpleadoCreateComponent implements OnInit {
       nombre_empleado: ['', [Validators.required]],
       id_tipo: ['', [Validators.required]],
       foto_empleado: [''],
+      clave_empleado: [''],
       estado_empleado: ['', [Validators.required]],
     });
   }
