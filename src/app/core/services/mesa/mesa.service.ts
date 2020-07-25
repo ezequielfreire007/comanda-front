@@ -19,7 +19,7 @@ export class MesaService {
   }
 
   getMesa(id: string) {
-    return this.http.get(`${environment.url_api}/mesa-orm/${id}`);
+    return this.http.get(`${environment.url_api}/mesa-orm/mesa/${id}`);
   }
 
 
