@@ -46,6 +46,13 @@
             <th mat-header-cell *matHeaderCellDef>PRECIO</th>
             <td mat-cell *matCellDef="let pedido"> {{pedido.precio_menu}} </td>
         </ng-container>
+        <ng-container matColumnDef="actions" >
+          <th mat-header-cell *matHeaderCellDef>ELIMINAR</th>
+          <td mat-cell *matCellDef="let pedido">
+            <!-- <a mat-raised-button [routerLink]="['edit', pedido._id]">VER</a> -->
+            <button mat-raised-button color="warn"  (click)="delete(pedido)">X</button>
+          </td>
+        </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
@@ -54,8 +61,7 @@
  
   <!-- grid de pedidos -->
   <div *ngIf="mesaSeleccionada" class="container">
-
-    <div class="element-grid">
+    <div *ngIf="menus" class="element-grid">
         <!-- grilla de menu -->
         <app-menu 
           *ngFor="let menu of menus" 

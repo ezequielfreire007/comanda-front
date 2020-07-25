@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
   mesa: Mesa;
   select: number;
   user: User;
-  codigoMesa: string;
+  mesaSelect: Mesa;
   // @Output() logout: EventEmitter<any> = new EventEmitter();
 
   constructor(
@@ -38,19 +38,11 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) {
     this.user = JSON.parse(localStorage.getItem('user'));
-    // console.log(this.user);
    }
 
   ngOnInit() {
-    if (!this.user) {
-      this.router.navigate(['./cliente']);
-    }
     this.fetchMesasAbiertas();
-    // esto tiene que ir a buscar las mesas en intervalos de 5 segundos
-    // if (this.mesa) {
-    //   setInterval(() => { this.fetchPedidos(); }, 5000000);
-    // }
-
+    console.log('ngOnInit');
   }
 
   fetchMesasAbiertas() {
@@ -60,7 +52,6 @@ export class HomeComponent implements OnInit {
     this.mesaService.getAllMesasAbiertas(dateSearch).subscribe( mesas => {
       this.mesas = mesas;
     });
-
   }
 
   seleccionarMesa(id: number) {
@@ -69,7 +60,7 @@ export class HomeComponent implements OnInit {
     this.mesa = this.mesas.find( mesa => mesa.id_mesa === id);
     this.mesa.descripcion_estado_mesa = 'esperando';
     this.updateMesaEstado(id); // la paso a esperando
-    this.updateCodigoMesa(id);
+    this.updateCodigoMesa(id); // codigo mesa
   }
 
   updateMesaEstado(id: number) {
@@ -83,11 +74,15 @@ export class HomeComponent implements OnInit {
 
   // esto tiene que ser igual a lo que ve el mozo
   fetchPedidos() { // falta hacer que traeiga el pedido por orden pero primero se tiene que hacer lo del mozo
+    console.log('se esta llamando el fetch ');
     const date = new Date().toISOString().slice(0, 10);
-    // console.log(date)
-    // console.log(this.mesa)
+    // const date2 = new Date();
+
+    // console.log(`${date2.getHours()}:${date2.getMinutes()}:${date2.getSeconds()}`);
+
+    console.log(`${this.mesaSelect}`)
     const dateSearch = {
-      codigo_pedido: this.mesa.codigo_mesa,
+      codigo_pedido: this.mesaSelect.codigo_mesa ,
       fecha_serch: date,
     };
     this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
@@ -99,15 +94,19 @@ export class HomeComponent implements OnInit {
   updateCodigoMesa(id: number) {
     // genero el codigo del cliente
     const date = new Date().toISOString().slice(0, 10);
-    const codAleatorio = `${this.aleatorio(100, 900)}-${date}`;
+    const time = new Date();
+    const miTime = `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`;
+    const codigoMesa = `${this.aleatorio(100, 900)}-${date}-${miTime}`;
     const dato = {
-      codigo_mesa: codAleatorio
+      codigo_mesa: codigoMesa
     };
     // actualizo el codigo de la mesa
     this.mesaService.updateMesaCodigo(id, dato).subscribe( mesa => console.log(mesa));
-    // this.mesaService.getMesa(this.select.toString()).subscribe(mesa => {
-    //   this.mesa = mesa;
-    // });
+
+    this.mesaService.getMesa(`${id}`).subscribe(mesa => {
+      this.mesaSelect = mesa;
+    });
+
   }
 
   // genera un codigo aleatorio que luego se debe guardar en la base

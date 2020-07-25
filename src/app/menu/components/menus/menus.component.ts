@@ -21,7 +21,7 @@ export class MenusComponent implements OnInit {
   menus: Menu[] = [];
   mesas: Mesa[] = [];
   pedidos: Pedido[] = [];
-  temPedidos: Pedido[] = [];
+  // temPedidos: Pedido[] = [];
   empleado: Empleado;
   pedido: Pedido = {};
   menu: Menu;
@@ -38,7 +38,8 @@ export class MenusComponent implements OnInit {
     'hora_inicio_pedido',
     'hora_estimada_entrega_pedido',
     'nombre_menu',
-    'precio_menu'
+    'precio_menu',
+    'actions'
   ];
 
   constructor(
@@ -66,7 +67,7 @@ export class MenusComponent implements OnInit {
   clickMesa(mesa) {
     this.mesaSeleccionada = mesa;
     // refrescos las listas
-    this.temPedidos = [];
+    // this.temPedidos = [];
     this.pedidos = [];
     this.cuenta = 0;
     // console.log(this.mesaSeleccionada);
@@ -74,9 +75,11 @@ export class MenusComponent implements OnInit {
 
   clickMenu(id: number) {
     this.pedido = {};
-    this.menu = this.menus.find(menu => menu.id_menu === id ? menu : null);
-    // this.empleado = JSON.parse(localStorage.getItem('empleado'));
-    console.log(this.menu);
+    if (this.menus) {
+      console.warn(`entro a clic menu y encontrar menu`)
+      this.menu = this.menus.find(menu => menu.id_menu === id ? menu : null);
+      console.log(this.menu);
+    }
 
     this.pedido.id_estado = 1; // pediente
     this.pedido.id_mesa = this.mesaSeleccionada.id_mesa;
@@ -115,11 +118,13 @@ export class MenusComponent implements OnInit {
     this.pedido.id_tipo_menu = this.menu.id_tipo;
 
     console.warn(this.pedido);
-    this.temPedidos.push(this.pedido);
-    this.pedidos = JSON.parse(JSON.stringify(this.temPedidos));
-    this.totalPedido();
-
     this.createPedido(this.pedido);
+    // this.temPedidos.push(this.pedido);
+    // this.pedidos = JSON.parse(JSON.stringify(this.temPedidos));
+    // cargo los pedidos con el codigo de la mesa seleccionada
+    this.fetchPedidosFechaMesa();
+    // se genera el total
+    this.totalPedido();
 
   }
 
@@ -139,12 +144,13 @@ export class MenusComponent implements OnInit {
     });
   }
 
-  fetchPedidos() { // falta hacer que traeiga el pedido por orden pero primero se tiene que hacer lo del mozo
+  fetchPedidosFechaMesa() { // falta hacer que traeiga el pedido por orden pero primero se tiene que hacer lo del mozo
     const date = new Date().toISOString().slice(0, 10);
     const dateSearch = {
+      codigo_pedido: this.mesaSeleccionada.codigo_mesa,
       fecha_serch: date,
     };
-    this.pedidoService.getPedidoFecha(dateSearch).subscribe(pedidos => {
+    this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
       console.log(pedidos);
       this.pedidos = pedidos;
     });
@@ -161,8 +167,8 @@ export class MenusComponent implements OnInit {
 
       retorno = sum.reduce((antes, desp) => {
         return antes + desp;
-      })
-      
+      });
+
       this.cuenta = retorno;
       console.log(retorno);
     }
@@ -172,6 +178,28 @@ export class MenusComponent implements OnInit {
     this.pedidoService.createPedido(pedido).subscribe(pedido => {
       console.log(pedido);
     });
+  }
+
+  delete(pedido: Pedido) {
+    console.log(`eliminar: ${pedido.id_pedidos}`);
+    this.pedidos = [];
+    this.pedidoService.deletePedido(`${pedido.id_pedidos}`).subscribe(pedido => {
+      console.log(pedido);
+    });
+
+    // this.pedidos.map(( miPedido ) => {
+    //   if (miPedido.id_pedidos === pedido.id_pedidos) {
+
+    //   }
+    // });
+
+    // console.log(miPedidos);
+    // this.pedidos = miPedidos;
+    // const pedidosTemp: Pedido [] = [];
+    // this.pedidos = pedidosTemp;
+
+    this.fetchPedidosFechaMesa();
+
   }
 
   // lo paso al cliente esto se tiene que dejar de usar recodatorio para cuando vuelva a mozo
