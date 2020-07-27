@@ -3,7 +3,9 @@
         <div class="row between-xs middle-xs header-row">
             <nav>
                 <a mat-button *appValidarRoles="[4,5]" routerLink="/mesa" routerLinkActive="active">Mesas</a>
-                <a mat-button *appValidarRoles="[4,5]" routerLink="/menu" routerLinkActive="active">Menus</a>
+                <!-- ej. el array de usuarios que tienen permisos -->
+                <!-- <a mat-button *appValidarRoles="[4,5]" routerLink="/mesa" routerLinkActive="active">Mesas</a> -->
+                <a mat-button *appValidarRoles="[4]" routerLink="/menu" routerLinkActive="active">Menus</a>
                 <a mat-button routerLink="/pedido" routerLinkActive="active">Pedidos</a>
                 <a mat-button *appValidarRoles="[5]" routerLink="/empleado" routerLinkActive="active">Empleados</a>
                 <a mat-button *appValidarRoles="[5]" routerLink="/admin" routerLinkActive="active">Administrador</a>
