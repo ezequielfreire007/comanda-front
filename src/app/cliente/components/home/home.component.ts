@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   user: User;
   mesaSelect: Mesa;
   codigo: string;
+  cuenta: number;
 
   constructor(
     private mesaService: MesaService,
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.fetchMesasAbiertas();
+    this.cuenta = 0;
     console.log('ngOnInit');
   }
 
@@ -89,8 +91,10 @@ export class HomeComponent implements OnInit {
     };
     this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
       this.pedidos = pedidos;
-      this.traerMesa(`${this.mesa.id_mesa}`)
+      // this.traerMesa(`${this.mesa.id_mesa}`)
+      this.totalPedido();
     });
+
 
   }
 
@@ -105,10 +109,9 @@ export class HomeComponent implements OnInit {
       codigo_mesa: codigoMesa
     };
     // actualizo el codigo de la mesa
-    this.mesaService.updateMesaCodigo(id, dato).subscribe( mesa => console.log(mesa));
-
-    this.traerMesa(`${id}`);
-    this.codigo = codigoMesa;
+    this.mesaService.updateMesaCodigo(id, dato).subscribe( mesa => {
+      this.traerMesa(`${id}`);
+    });
 
   }
 
@@ -117,9 +120,42 @@ export class HomeComponent implements OnInit {
     this.mesaService.getMesa(id).subscribe( mesa => {
       console.log(mesa);
       this.mesa = mesa;
-    })
+    });
   }
 
+  totalPedido() {
+    if ( this.pedidos ) {
+      let temp = this.pedidos;
+      let sum = [];
+      let retorno = 0;
+      temp.forEach( (dato) => {
+        sum.push(dato.precio_menu);
+      });
+
+      retorno = sum.reduce((antes, desp) => {
+        return antes + desp;
+      });
+
+      this.cuenta = retorno;
+      console.log(retorno);
+    }
+  }
+
+  pedirCuenta() {
+    this.updateEstadoMesa(this.mesa.id_mesa);
+  }
+
+  updateEstadoMesa(id: number) {
+    console.log(`actualiza a pedir cuenta`)
+    const dato = {
+      id_estado_mesa: 5 // 5 - pidiendo cuenta
+    };
+    this.mesaService.updateMesaCliente(id, dato).subscribe(mesa => {
+      console.log(mesa);
+      this.traerMesa(`${id}`);
+    });
+  }
+  
   // genera un codigo aleatorio que luego se debe guardar en la base
   aleatorio(inferior, superior) {
     const resAleatorio = Math.floor((Math.random() * (superior - inferior + 1)) + inferior);

@@ -187,17 +187,6 @@ export class MenusComponent implements OnInit {
       console.log(pedido);
     });
 
-    // this.pedidos.map(( miPedido ) => {
-    //   if (miPedido.id_pedidos === pedido.id_pedidos) {
-
-    //   }
-    // });
-
-    // console.log(miPedidos);
-    // this.pedidos = miPedidos;
-    // const pedidosTemp: Pedido [] = [];
-    // this.pedidos = pedidosTemp;
-
     this.fetchPedidosFechaMesa();
 
   }

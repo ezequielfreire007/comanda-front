@@ -61,15 +61,16 @@
                         <div class="card">
                             <img class="card-img-top img-mesa " [src]="mesa.foto_mesa">
                             <div class="card-body">
-                                <div class="badges">
+                                <div class="badges aling-butoon">
                                     <!-- <span class="badge badge-warning">{{mesa.id_estado_mesa}}</span> -->
-                                    <span class="badge badge-info">{{ mesa.id_estado_mesa | estadosMesa }}</span>
+                                    <span class="badge badge-info"><h5>{{ mesa.id_estado_mesa | estadosMesa }}</h5></span>
+                                    <span *ngIf="cuenta" class="badge badge-info"><h3>${{ cuenta }}</h3></span>
                                 </div>
                                 <h5 class="card-title">{{user.displayName}}</h5>
                                 <p class="card-text">El mozo se estara hacercando para realizar tu pedido</p>
                                 <div class="aling-butoon">
                                     <button class="btn btn-outline-warning boton" (click)="fetchPedidos()">Ver Pedido</button>
-                                    <button class="btn btn-outline-warning boton" (click)="fetchPedidos()">Pedi tu cuenta</button>
+                                    <button class="btn btn-outline-warning boton" (click)="pedirCuenta()">Pedi tu cuenta</button>
                                 </div>
                             </div>
                         </div>
