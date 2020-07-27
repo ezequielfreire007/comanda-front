@@ -144,7 +144,7 @@ export class MenusComponent implements OnInit {
     });
   }
 
-  fetchPedidosFechaMesa() { // falta hacer que traeiga el pedido por orden pero primero se tiene que hacer lo del mozo
+  fetchPedidosFechaMesa() {
     const date = new Date().toISOString().slice(0, 10);
     const dateSearch = {
       codigo_pedido: this.mesaSeleccionada.codigo_mesa,

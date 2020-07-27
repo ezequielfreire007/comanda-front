@@ -1,5 +1,4 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Pipe({
   name: 'valorMayuscula'

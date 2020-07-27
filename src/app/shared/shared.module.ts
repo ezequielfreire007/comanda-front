@@ -14,6 +14,7 @@ import { ValorMayusculaPipe } from './pipes/valor-mayuscula/valor-mayuscula.pipe
 import { GreenDirective } from './directives/color-estado-mesa/green.directive';
 import { BlueDirective } from './directives/color-estado-mesa/blue.directive';
 import { OrangeDirective } from './directives/color-estado-mesa/orange.directive';
+import { EstadosMesaPipe } from './pipes/estados_mesa/estados-mesa.pipe';
 
 @NgModule({
   declarations: [
@@ -24,18 +25,21 @@ import { OrangeDirective } from './directives/color-estado-mesa/orange.directive
     ValorMayusculaPipe,
     GreenDirective,
     BlueDirective,
-    OrangeDirective
+    OrangeDirective,
+    EstadosMesaPipe
   ],
   exports: [
     HeaderComponent,
     FooterComponent,
     FormsModule,
     EstadoEmpleadoPipe,
+    ValidarRolesDirective,
     ValorMayusculaPipe,
     ReactiveFormsModule,
     GreenDirective,
     BlueDirective,
-    OrangeDirective
+    OrangeDirective,
+    EstadosMesaPipe
   ],
   imports: [
     CommonModule,
