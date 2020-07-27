@@ -38,16 +38,26 @@
            <!-- <a mat-raised-button [routerLink]="['edit', pedido._id]">VER</a> -->
             <ng-container class="row" [ngSwitch]="empleado.id_tipo">
                 <ng-container *ngSwitchCase="5" >
-                    <button mat-raised-button  *ngIf="(pedido.descripcion_estado !== 'entregado')"  color="accent" (click)="cerrarPedido(pedido)">Cobrar</button>
+                    <!-- <button mat-raised-button  *ngIf="(pedido.descripcion_estado !== 'entregado')"  color="accent" (click)="cerrarPedido(pedido)">Cobrar</button> -->
                 </ng-container>
                 <ng-container *ngSwitchCase="4" >
-                    <button mat-raised-button *ngIf="(pedido.descripcion_estado !== 'entregado')"  color="primary" (click)="tomarPedido(pedido)">Tomar</button>
+                    <button mat-raised-button   color="primary" (click)="entregarPedido(pedido)">Entregar</button>
+                    <!-- <button mat-raised-button color="warn" *ngIf="(pedido.descripcion_estado !== 'finalizado')" (click)="pedidoListo(pedido)">Listo</button> -->
                 </ng-container>
-                <ng-container *ngSwitchDefault>
+                <ng-container *ngSwitchCase="3" >
                     <button  mat-raised-button *ngIf="(pedido.descripcion_estado !== 'preparandose')"  color="primary" (click)="tomarPedido(pedido)">Tomar</button>
+                    <button mat-raised-button color="warn" *ngIf="(pedido.descripcion_estado !== 'finalizado')" (click)="pedidoListo(pedido)">Listo</button>
+                </ng-container>  
+                <ng-container *ngSwitchCase="2" >
+                    <button  mat-raised-button *ngIf="(pedido.descripcion_estado !== 'preparandose')"  color="primary" (click)="tomarPedido(pedido)">Tomar</button>
+                    <button mat-raised-button color="warn" *ngIf="(pedido.descripcion_estado !== 'finalizado')" (click)="pedidoListo(pedido)">Listo</button>
+                </ng-container>  
+                <ng-container *ngSwitchCase="1" >
+                    <button  mat-raised-button *ngIf="(pedido.descripcion_estado !== 'preparandose')"  color="primary" (click)="tomarPedido(pedido)">Tomar</button>
+                    <button mat-raised-button color="warn" *ngIf="(pedido.descripcion_estado !== 'finalizado')" (click)="pedidoListo(pedido)">Listo</button>
                 </ng-container>  
             </ng-container>
-            <button mat-raised-button color="warn" *ngIf="(pedido.descripcion_estado !== 'finalizado')" (click)="pedidoListo(pedido)">Listo</button>
+            
         </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

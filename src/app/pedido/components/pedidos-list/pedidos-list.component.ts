@@ -7,10 +7,7 @@ import { Router } from '@angular/router';
 import { MesaService } from '../../../core/services/mesa/mesa.service';
 import { Mesa } from '../../../core/models/mesa';
 
-
 import { JwtHelperService } from '@auth0/angular-jwt';
-
-
 
 @Component({
   selector: 'app-pedidos-list',
@@ -43,24 +40,11 @@ export class PedidosListComponent implements OnInit {
   ) {
     this.empleado =  this.helper.decodeToken(localStorage.getItem('token')).empleado;
     console.log(this.empleado);
-          // localStorage.setItem('empleado', JSON.stringify(decodeToken.empleado));
-    // this.empleado = JSON.parse(localStorage.getItem('empleado'));
-    if (!this.empleado) {
-      console.log(`donde regresaba a mesas porque no esta el pedido`)
-      // this.router.navigate(['/mesa']);
-    }
   }
 
   ngOnInit() {
     // this.fetchPedidos();
     this.fetchPedidosFecha();
-  }
-
-  fetchPedidos() {
-    this.pedidoService.getAllPedido().subscribe(pedidos => {
-      console.log(pedidos);
-      this.pedidos = pedidos;
-    });
   }
 
   fetchPedidosFecha() {
@@ -77,53 +61,25 @@ export class PedidosListComponent implements OnInit {
     });
   }
 
-
   tomarPedido(pedido: Pedido) {
-    switch (this.empleado.id_tipo) {
-      case 5:
-        // no se hace nada
-        break;
-      case 4:
-        pedido.id_estado = 4; // entregado
-        this.updateEstadoMesa(2, pedido);
-        break;
-      default:
-        pedido.id_estado = 2; // preparandose
-        break;
-    }
+    pedido.id_estado = 2; // preparandose
+    this.updatePedido(pedido.id_pedidos, pedido);
+  }
 
-    this.pedidoService.updatePedido(pedido.id_pedidos, pedido).subscribe(updatePedido => {
-      console.log(updatePedido);
-    });
-    this.router.navigate(['/']);
+  entregarPedido(pedido: Pedido) {
+    pedido.id_estado = 5; // finaliza
+    pedido.id_tipo_menu = 5; // -> se pasa a socio
+    this.updateEstadoMesa(2, pedido); // actualizo el estado de la mesa (comiendo)
+    this.updatePedido(pedido.id_pedidos, pedido);
   }
 
   pedidoListo(pedido: Pedido) {
-    switch (this.empleado.id_tipo) {
-      case 5:
-        // no se hace nada
-        break;
-      case 4:
-        pedido.id_estado = 5; // finalizado
-        pedido.id_tipo_menu = 5;
-        this.updateEstadoMesa(4, pedido); // actualizo el estado de la mesa
-        break;
-      default:
-        pedido.id_estado = 3; // preparandose
-        pedido.id_tipo_menu = 4;
-        break;
-    }
+    pedido.id_estado = 3; // servir
+    pedido.id_tipo_menu = 4; // -> se pasa al mozo
 
-    this.pedidoService.updatePedido(pedido.id_pedidos, pedido).subscribe(updatePedido => {
-      console.log(updatePedido);
-    });
-    this.router.navigate(['/']);
-
+    this.updatePedido(pedido.id_pedidos, pedido);
   }
 
-  cerrarPedido(pedido: Pedido) {
-
-  }
 
   updateEstadoMesa(id: number, pedido: Pedido) {
     const updateMesa: Partial<Mesa> = {
@@ -131,6 +87,13 @@ export class PedidosListComponent implements OnInit {
     };
     this.mesaService.updateMesa(pedido.id_mesa, updateMesa).subscribe(mesa => {
       console.log(mesa);
+    });
+  }
+
+  updatePedido(id: number, pedido: Pedido) {
+    this.pedidoService.updatePedido(pedido.id_pedidos, pedido).subscribe(updatePedido => {
+      console.log(updatePedido);
+      this.fetchPedidosFecha();
     });
   }
 
