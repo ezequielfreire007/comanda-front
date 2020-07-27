@@ -59,15 +59,18 @@
                 <div class="row mesa">
                     <div class="col-12 col-md-6 col-lg-4 mb-4">
                         <div class="card">
-                            <img class="card-img-top img-mesa " [src]="mesa.foto_mesa" alt="">
+                            <img class="card-img-top img-mesa " [src]="mesa.foto_mesa">
                             <div class="card-body">
                                 <div class="badges">
                                     <!-- <span class="badge badge-warning">{{mesa.id_estado_mesa}}</span> -->
-                                    <span class="badge badge-info">{{mesa.descripcion_estado_mesa | valorMayuscula}}</span>
+                                    <span class="badge badge-info">{{ mesa.id_estado_mesa | estadosMesa }}</span>
                                 </div>
                                 <h5 class="card-title">{{user.displayName}}</h5>
                                 <p class="card-text">El mozo se estara hacercando para realizar tu pedido</p>
-                                <button class="btn btn-outline-warning boton" (click)="fetchPedidos()">Pedi tu cuenta</button>
+                                <div class="aling-butoon">
+                                    <button class="btn btn-outline-warning boton" (click)="fetchPedidos()">Ver Pedido</button>
+                                    <button class="btn btn-outline-warning boton" (click)="fetchPedidos()">Pedi tu cuenta</button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -83,6 +83,13 @@
     position: relative;
 }
 
+.aling-butoon {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+
 /*media query establece el tamaño para celulares*/
 @media(min-width: 576px){
     .perfil-img {
