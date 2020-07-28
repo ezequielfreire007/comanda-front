@@ -13,11 +13,10 @@ import { Empleado } from 'src/app/core/models/empleado';
 })
 export class MesaComponent implements OnInit {
   @Input() mesa: Mesa;
-  // @Output() productClicket: EventEmitter<any> = new EventEmitter();
+  @Output() mesaClicket: EventEmitter<any> = new EventEmitter();
 
   @Input() estadoMesa: EstadosMesa[] = [];
   selected: number;
-
 
   constructor(
     private mesaService: MesaService
@@ -43,27 +42,15 @@ export class MesaComponent implements OnInit {
       } else {
         console.log('no actualizo base de datos');
       }
-
-      
     } else {
       console.log('no hace nada');
     }
   }
 
-  // updateMesa() {
-  //   const updateMesa: Partial<Mesa> = {
-  //     id_estado_mesa: this.selected,
-  //   };
-  //   this.mesaService.updateMesa(this.mesa.id_mesa, updateMesa).subscribe(mesa => {
-  //     console.log(mesa);
-  //   });
-  // }
-
-  cobrarCuenta() {
-    const mesa = {
-      id_mesa: this.mesa.id_mesa
-    };
-    localStorage.setItem('mesa-cobrar', JSON.stringify(mesa));
+  cobrarCuenta(mesa: Mesa) {
+    console.log(`emito la mesa`);
+    this.mesaClicket.emit(mesa);
+    localStorage.removeItem('mesa-cobrar');
   }
 
 }

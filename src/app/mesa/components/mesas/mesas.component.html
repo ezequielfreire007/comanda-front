@@ -1,6 +1,7 @@
 <div class="element-grid">
     <app-mesa
         *ngFor="let mesa of mesas"
-        [mesa]="mesa" [estadoMesa]="estadoMesa">
+        [mesa]="mesa" [estadoMesa]="estadoMesa"
+        (mesaClicket)="cobrarCuenta($event)">
     </app-mesa>
 </div>
