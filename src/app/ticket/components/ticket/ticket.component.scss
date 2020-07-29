@@ -1,0 +1,25 @@
+.conteiner {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.element-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.title-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.example-header-image {
+    background-image: url('../../../../assets/img/perfil.jpg');
+    background-size: cover;
+}

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PedidoService } from '../../../core/services/pedido/pedido.service';
 import { Pedido } from 'src/app/core/models/pedido';
 import { Empleado } from 'src/app/core/models/empleado';
+import { Mesa } from 'src/app/core/models/mesa';
 
 @Component({
   selector: 'app-ticket',
@@ -14,45 +15,64 @@ export class TicketComponent implements OnInit {
   pedidosCobrar: Pedido[] = [];
   pedidosCobrarReduce: Pedido[] = [];
   empleado: Empleado;
-  total: number;
+  mesa: Mesa;
+  cuenta: number;
+  fecha: string;
+  hora: number;
 
   constructor(
     private pedidoService: PedidoService
-  ) { 
+  ) {
     this.empleado = JSON.parse(localStorage.getItem('empleado'));
+    this.mesa = JSON.parse(localStorage.getItem('mesa-cobrar'));
+    console.log(this.mesa);
   }
 
   ngOnInit() {
+    this.cuenta = 0;
+    this.cabeceraTicket();
+    this.fetchPedidos();
+    this.totalPedido();
   }
 
-  fetchPedidosFecha() {
+  cabeceraTicket() {
+    const date = new Date();
+    const dateTemp = date.toISOString().slice(0, 10).split('-');
+    this.fecha = `${dateTemp[2]}/${dateTemp[1]}/${dateTemp[0]}`;
+    this.hora = date.getTime();
+
+  }
+
+  fetchPedidos() {
+    console.log('se esta llamando el fetch ');
     const date = new Date().toISOString().slice(0, 10);
+    console.log(this.mesa.codigo_mesa);
     const dateSearch = {
+      codigo_pedido: '315-2020-07-29-21:10:7' ,
       fecha_serch: date,
-      id_empleado: this.empleado.id_empleado,
-      id_tipo: this.empleado.id_tipo
     };
-    console.log(dateSearch);
-    this.pedidoService.getPedidoFecha(dateSearch).subscribe(pedidos => {
-      console.log(pedidos);
+    this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
       this.pedidos = pedidos;
+      this.totalPedido();
     });
   }
 
-  traerPorMesa() {
-     // id_mesa: this.mesa.id_mesa
-    const initialValue = 0;
+  totalPedido() {
+    if ( this.pedidos ) {
+      let temp = this.pedidos;
+      let sum = [];
+      let retorno = 0;
+      temp.forEach( (dato) => {
+        sum.push(dato.precio_menu);
+      });
 
-    const mesa = JSON.parse(localStorage.getItem('mesa-cobrar'));
+      retorno = sum.reduce((antes, desp) => {
+        return antes + desp;
+      });
 
-    this.pedidos.map(pedido => {
-      if (pedido.id_mesa === mesa.id_mesa) {
-        if (pedido.id_estado === 6) { // esta para cobrar
-          this.pedidosCobrar.push(pedido);
-        }
-      }
-    });
-
+      this.cuenta = retorno;
+      console.log(retorno);
+    }
   }
 
 }

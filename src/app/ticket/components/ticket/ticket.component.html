@@ -1,1 +1,33 @@
-<p>ticket works!</p>
+<div class="conteiner">
+    <mat-card class="example-card mat-elevation-z8">
+        <mat-card-header class="title-card">
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Love Cooking</mat-card-title>
+            <mat-card-subtitle>IVA Incluido</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+            <p>-------------------------------------------------------------------------------------------</p>
+            <mat-list role="list">
+                <mat-list-item 
+                    *ngFor="let pedido of pedidos" 
+                    role="listitem">
+                    <div class="element-grid">
+                        <div>{{ pedido.nombre_menu }} </div>
+                        <div> --------------------- </div>
+                        <div>${{pedido.precio_menu}}</div>   
+                    </div>
+                </mat-list-item>
+            </mat-list>
+            <p>-------------------------------------------------------------------------------------------</p>
+        </mat-card-content>
+    
+        <mat-card-actions>
+            <p>Fecha: {{ this.fecha }}</p>
+            <p>hora: {{ this.hora | date: 'shortTime' }}</p>
+            <h5>Total:  -------------------------------- ${{ cuenta }}</h5>
+            <br>
+            <br>
+        </mat-card-actions>
+    </mat-card>
+</div>
