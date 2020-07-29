@@ -45,6 +45,7 @@ export class MesasComponent implements OnInit {
   cobrarCuenta(mesa: Mesa) {
     console.log('entro a mesas');
     console.log(mesa);
+    
     localStorage.setItem('mesa-cobrar', JSON.stringify(mesa));
     this.updateMesa(mesa.id_mesa);
 

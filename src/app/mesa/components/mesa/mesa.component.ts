@@ -50,7 +50,6 @@ export class MesaComponent implements OnInit {
   cobrarCuenta(mesa: Mesa) {
     console.log(`emito la mesa`);
     this.mesaClicket.emit(mesa);
-    localStorage.removeItem('mesa-cobrar');
   }
 
 }

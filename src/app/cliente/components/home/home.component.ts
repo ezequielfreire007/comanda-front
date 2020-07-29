@@ -91,11 +91,10 @@ export class HomeComponent implements OnInit {
     };
     this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
       this.pedidos = pedidos;
-      // this.traerMesa(`${this.mesa.id_mesa}`)
       this.totalPedido();
     });
 
-
+    this.traerMesa(`${this.mesa.id_mesa}`)
   }
 
   updateCodigoMesa(id: number) {
@@ -112,6 +111,7 @@ export class HomeComponent implements OnInit {
     this.mesaService.updateMesaCodigo(id, dato).subscribe( mesa => {
       this.traerMesa(`${id}`);
     });
+
 
   }
 
