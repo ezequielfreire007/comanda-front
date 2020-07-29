@@ -92,10 +92,11 @@ export class HomeComponent implements OnInit {
     this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
       this.pedidos = pedidos;
       console.log(pedidos)
-      setTimeout(() => {
-        this.totalPedido();
-      }, 1000);
     });
+
+    setTimeout(() => {
+      this.totalPedido();
+    }, 1000);
 
     this.traerMesa(`${this.mesa.id_mesa}`)
   }
@@ -126,18 +127,36 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  // totalPedido() {
+  //   if ( this.pedidos !== undefined ) {
+  //     let temp = this.pedidos;
+  //     let sum = [];
+  //     let retorno = 0;
+  //     temp.forEach( (dato) => {
+
+  //       retorno += dato.precio_menu;
+  //       sum.push(dato.precio_menu);
+  //     });
+
+  //     this.cuenta = retorno;
+  //     console.log(retorno);
+  //   }
+  // }
+
   totalPedido() {
+    // debugger;
+    console.log('entro al total de pedido')
     if ( this.pedidos ) {
       let temp = this.pedidos;
-      let sum = [];
-      let retorno = 0;
+      let sum: number [] = [];
+      let retorno:number = 0;
       temp.forEach( (dato) => {
-        console.log(dato)
-        sum.push(dato.precio_menu);
+        console.log(dato.precio_menu)
+        sum.push(Number(dato.precio_menu));
       });
 
-      retorno = sum.reduce((antes, desp) => {
-        return antes + desp;
+      sum.forEach( dato => {
+        retorno += dato;
       });
 
       this.cuenta = retorno;

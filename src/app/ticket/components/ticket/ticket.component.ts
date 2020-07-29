@@ -50,26 +50,33 @@ export class TicketComponent implements OnInit {
     const date = new Date().toISOString().slice(0, 10);
     console.log(this.mesa.codigo_mesa);
     const dateSearch = {
-      codigo_pedido: '315-2020-07-29-21:10:7' ,
+      codigo_pedido: this.mesa.codigo_mesa,
       fecha_serch: date,
     };
     this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
       this.pedidos = pedidos;
-      this.totalPedido();
+      // this.totalPedido();
     });
+
+    setTimeout(() => {
+      this.totalPedido();
+    }, 1000);
   }
 
   totalPedido() {
+    // debugger;
+    console.log('entro al total de pedido')
     if ( this.pedidos ) {
       let temp = this.pedidos;
-      let sum = [];
-      let retorno = 0;
+      let sum: number [] = [];
+      let retorno:number = 0;
       temp.forEach( (dato) => {
-        sum.push(dato.precio_menu);
+        console.log(dato.precio_menu)
+        sum.push(Number(dato.precio_menu));
       });
 
-      retorno = sum.reduce((antes, desp) => {
-        return antes + desp;
+      sum.forEach( dato => {
+        retorno += dato;
       });
 
       this.cuenta = retorno;

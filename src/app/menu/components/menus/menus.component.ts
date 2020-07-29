@@ -10,6 +10,7 @@ import { Pedido } from '../../../core/models/pedido';
 import { Router } from '@angular/router';
 import { MesaService } from 'src/app/core/services/mesa/mesa.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-menus',
@@ -30,6 +31,7 @@ export class MenusComponent implements OnInit {
   pedidoFecha: string;
   mesaSeleccionada: Mesa;
   helper = new JwtHelperService();
+  // cuenta: Observable<number>;
   cuenta: number;
 
   @ViewChild('pedidoTable', {static: false}) table: MatTable<Pedido>;
@@ -57,7 +59,7 @@ export class MenusComponent implements OnInit {
     // }
     this.fetchMenu();
     this.fetchMesa();
-    this.cuenta = 0;
+    // this.cuenta = 0;
     // obtengo datos del empleado en el token
     this.empleado =  this.helper.decodeToken(localStorage.getItem('token')).empleado;
     console.log(this.empleado)
@@ -124,7 +126,7 @@ export class MenusComponent implements OnInit {
     // cargo los pedidos con el codigo de la mesa seleccionada
     this.fetchPedidosFechaMesa();
     // se genera el total
-    this.totalPedido();
+    // this.totalPedido();
 
   }
 
@@ -151,22 +153,30 @@ export class MenusComponent implements OnInit {
       fecha_serch: date,
     };
     this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
-      console.log(pedidos);
+      // console.log(pedidos);
       this.pedidos = pedidos;
+      
     });
+
+    setTimeout(() => {
+      this.totalPedido();
+    }, 1000);
   }
 
   totalPedido() {
+    // debugger;
+    console.log('entro al total de pedido')
     if ( this.pedidos ) {
       let temp = this.pedidos;
-      let sum = [];
-      let retorno;
+      let sum: number [] = [];
+      let retorno:number = 0;
       temp.forEach( (dato) => {
-        sum.push(dato.precio_menu);
+        console.log(dato.precio_menu)
+        sum.push(Number(dato.precio_menu));
       });
 
-      retorno = sum.reduce((antes, desp) => {
-        return antes + desp;
+      sum.forEach( dato => {
+        retorno += dato;
       });
 
       this.cuenta = retorno;
@@ -185,9 +195,9 @@ export class MenusComponent implements OnInit {
     this.pedidos = [];
     this.pedidoService.deletePedido(`${pedido.id_pedidos}`).subscribe(pedido => {
       console.log(pedido);
+      this.fetchPedidosFechaMesa();
     });
 
-    this.fetchPedidosFechaMesa();
 
   }
 
