@@ -3,8 +3,8 @@
         <img [src]="mesa.foto_mesa" alt="">
     </div>
     <mat-card-header>
-        <mat-card-title>{{ mesa.codigo_mesa}}</mat-card-title>
-
+        <mat-card-title>Table-{{mesa.id_mesa}}</mat-card-title> 
+        <mat-card-subtitle>{{ mesa.codigo_mesa}}</mat-card-subtitle>
         <div [ngSwitch]="mesa.descripcion_estado_mesa">
             <mat-card-subtitle appGreen *ngSwitchCase="'esperando'"> 
                <h4 appGreen>{{ mesa.descripcion_estado_mesa }}</h4>
