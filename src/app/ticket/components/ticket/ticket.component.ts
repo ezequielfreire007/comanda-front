@@ -32,7 +32,9 @@ export class TicketComponent implements OnInit {
     this.cuenta = 0;
     this.cabeceraTicket();
     this.fetchPedidos();
-    this.totalPedido();
+    setTimeout(() => {
+      this.totalPedido();
+    }, 1000);
   }
 
   cabeceraTicket() {

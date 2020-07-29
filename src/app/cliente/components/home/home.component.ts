@@ -91,7 +91,10 @@ export class HomeComponent implements OnInit {
     };
     this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
       this.pedidos = pedidos;
-      this.totalPedido();
+      console.log(pedidos)
+      setTimeout(() => {
+        this.totalPedido();
+      }, 1000);
     });
 
     this.traerMesa(`${this.mesa.id_mesa}`)
@@ -129,6 +132,7 @@ export class HomeComponent implements OnInit {
       let sum = [];
       let retorno = 0;
       temp.forEach( (dato) => {
+        console.log(dato)
         sum.push(dato.precio_menu);
       });
 
