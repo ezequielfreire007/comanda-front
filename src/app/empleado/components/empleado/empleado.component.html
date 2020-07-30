@@ -1,7 +1,11 @@
 <mat-card>
-    <!-- <div class="crop-image">
-        <img [src]="mesa.foto_mesa" alt="">
-    </div> -->
+    <div class="crop-image">
+        <ng-component>
+
+        </ng-component>
+        <img *ngIf="empleado.foto_empleado"  [src]="empleado.foto_empleado" alt="">
+        <img *ngIf="!empleado.foto_empleado"  src="../../../../assets/img/empleado/default.png" alt="">
+    </div>
     <mat-card-header>
         <mat-card-title>{{ empleado.nombre_empleado}}</mat-card-title>
         <mat-card-subtitle>{{ empleado.estado_empleado | estadoEmpleado }}</mat-card-subtitle>

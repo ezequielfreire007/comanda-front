@@ -17,6 +17,7 @@ import { PedidosComponent } from './components/pedidos/pedidos.component';
 import { EmpleadoEditComponent } from './components/empleado-edit/empleado-edit.component';
 import { EmpleadoCreateComponent } from './components/empleado-create/empleado-create.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { MesaEditComponent } from './components/mesa-edit/mesa-edit.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ChartComponent } from './components/chart/chart.component';
     PedidosComponent,
     EmpleadoEditComponent,
     EmpleadoCreateComponent,
-    ChartComponent
+    ChartComponent,
+    MesaEditComponent
   ],
   imports: [
     CommonModule,

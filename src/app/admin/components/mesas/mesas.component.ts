@@ -10,11 +10,6 @@ import { MatTableDataSource, MatTable } from '@angular/material';
 })
 export class MesasComponent implements OnInit {
 
-  // id_mesa: 1
-  // codigo_mesa: "mesa_01"
-  // id_estado_mesa: 4
-  // descripcion_estado_mesa: "cerrada"
-  // foto_mesa: "assets/img/mesa/mesa1.jpg"
   @ViewChild('producTable', {static: false}) table: MatTable<Mesa>;
   mesas: Mesa[] = [];
 
@@ -38,5 +33,17 @@ export class MesasComponent implements OnInit {
       console.log(mesas);
       this.mesas = mesas;
     });
+  }
+
+  deleteMesa(mesa: Mesa) {
+    this.mesaService.deleteMesa(`${mesa.id_mesa}`).subscribe( mesa => {
+      console.log(mesa);
+      this.fetchMesas();
+    });
+    // this.mesaService.(mesa.id_empleado.toString())
+    //   .subscribe( empleadoDelete => {
+    //     console.log(empleadoDelete);
+    //     this.fetchAll();
+    //   });
   }
 }

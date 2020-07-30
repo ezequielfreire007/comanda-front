@@ -1,4 +1,4 @@
-<a mat-raised-button routerLink="create">Crear nuevo mesa</a>
+<!-- <a mat-raised-button routerLink="create">Crear nuevo mesa</a> -->
 <table #producTable  mat-table [dataSource]="mesas" class="mat-elevation-z8 mesas-table">
     <ng-container matColumnDef="id_mesa">
         <th mat-header-cell *matHeaderCellDef>ID</th>
@@ -15,9 +15,9 @@
 
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>ACTIONS</th>
-        <td mat-cell *matCellDef="let empleado">
-            <a mat-raised-button [routerLink]="['edit', empleado._id]">Editar</a>
-            <button mat-raised-button color="warn" (click)="deleteProducts(empleado)">Eliminar</button>
+        <td mat-cell *matCellDef="let mesa">
+            <!-- <a mat-raised-button [routerLink]="['edit', mesa.id_mesa]">Editar</a> -->
+            <button mat-raised-button color="warn" (click)="deleteMesa(mesa)">Eliminar</button>
         </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
