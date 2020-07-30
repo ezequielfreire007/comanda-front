@@ -15,6 +15,7 @@ import { GreenDirective } from './directives/color-estado-mesa/green.directive';
 import { BlueDirective } from './directives/color-estado-mesa/blue.directive';
 import { OrangeDirective } from './directives/color-estado-mesa/orange.directive';
 import { EstadosMesaPipe } from './pipes/estados_mesa/estados-mesa.pipe';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -39,14 +40,16 @@ import { EstadosMesaPipe } from './pipes/estados_mesa/estados-mesa.pipe';
     GreenDirective,
     BlueDirective,
     OrangeDirective,
-    EstadosMesaPipe
+    EstadosMesaPipe,
+    ChartsModule
   ],
   imports: [
     CommonModule,
     MaterializeModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
   ]
 })
 export class SharedModule { }
