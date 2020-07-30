@@ -87,7 +87,7 @@ export class ChartComponent implements OnInit {
 
   generarGraficos() {
     // se filtra por año para asignar cantidades por mes
-    console.log('ingresa a generar graficos ')
+    // console.log('ingresa a generar graficos ')
     let dateActual = new Date();
     let dateTemp = dateActual.toISOString().slice(0, 10).split('-');
 
@@ -99,7 +99,6 @@ export class ChartComponent implements OnInit {
             this.cantPorMes.cantEnero += 1;
             break;
           case '02':
-            console.log('entro a 2')
             this.cantPorMes.cantFebrero += 1;
             break;
           case '03':
@@ -154,7 +153,7 @@ export class ChartComponent implements OnInit {
         ],
         label: 'cant pedidos vendido' }
       ];
-      console.log(this.cantPorMes)
+      // console.log(this.cantPorMes)
     });
 
   }
