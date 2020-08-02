@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { EmpleadoService } from '../../../core/services/empleado/empleado.service';
 import { Empleado } from '../../../core/models/empleado';
 import { Router } from '@angular/router';
 import { MatTableDataSource, MatTable } from '@angular/material';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-empleados',
@@ -12,6 +13,8 @@ import { MatTableDataSource, MatTable } from '@angular/material';
 export class EmpleadosComponent implements OnInit {
 
   @ViewChild('producTable', {static: false}) table: MatTable<Empleado>;
+  @ViewChild('htmlData', {static: false}) htmlData: ElementRef;
+
   empleados: Empleado[] = [];
   displayedColumns: string[] = [
     'id_empleado',
@@ -44,6 +47,29 @@ export class EmpleadosComponent implements OnInit {
         console.log(empleadoDelete);
         this.fetchAll();
       });
+  }
+
+  openPDF() {
+    const DATA = this.htmlData.nativeElement;
+    const doc = new jsPDF('p', 'pt', 'a4');
+    doc.fromHTML(DATA.innerHTML, 15, 15);
+    doc.output('dataurlnewwindow');
+  }
+
+  downloadPDF() {
+    const DATA = this.htmlData.nativeElement;
+    const doc = new jsPDF('p', 'pt', 'a4');
+
+    const handleElement = { '#editor': function ( element, renderer) {
+        return true;
+      }
+    };
+    doc.fromHTML(DATA.innerHTML, 15, 15, {
+      'width': 200,
+      'elementHandlers': handleElement
+    });
+
+    doc.save('empleados.pdf');
   }
 
 }

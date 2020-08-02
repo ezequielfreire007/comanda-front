@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { PedidoService } from '../../../core/services/pedido/pedido.service';
 import { Empleado } from 'src/app/core/models/empleado';
 import { MatTableDataSource, MatTable } from '@angular/material';
 import { Pedido } from 'src/app/core/models/pedido';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
+import * as jsPDF from 'jspdf';
 
 @Component({
   selector: 'app-pedidos',
@@ -14,6 +15,8 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class PedidosComponent implements OnInit {
 
   @ViewChild('pedidoTable', {static: false}) table: MatTable<Pedido>;
+  @ViewChild('htmlData', {static: false}) htmlData: ElementRef;
+
   pedidos: Pedido[] = [];
   empleado: Empleado;
   helper = new JwtHelperService();
@@ -50,5 +53,28 @@ export class PedidosComponent implements OnInit {
       console.log(pedidos);
       this.pedidos = pedidos;
     });
+  }
+
+  openPDF() {
+    const DATA = this.htmlData.nativeElement;
+    const doc = new jsPDF('p', 'pt', 'a4' );
+    doc.fromHTML(DATA.innerHTML, 15, 15);
+    doc.output('dataurlnewwindow');
+  }
+
+  downloadPDF() {
+    const DATA = this.htmlData.nativeElement;
+    const doc = new jsPDF('p', 'pt', 'a4');
+
+    const handleElement = { '#editor': function ( element, renderer) {
+        return true;
+      }
+    };
+    doc.fromHTML(DATA.innerHTML, 15, 15, {
+      'width': 250,
+      'elementHandlers': handleElement
+    });
+
+    doc.save('pedidos.pdf');
   }
 }
