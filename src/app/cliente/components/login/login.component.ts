@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, VERSION } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { AutgoogleService } from '../../../core/services/authgoogle/authgoogle.service';
 import { User } from '../../../core/models/userSocial';
 import { Login } from '../../../core/models/login';
@@ -18,6 +18,10 @@ export class LoginComponent implements OnInit {
   uerLogin: Login;
   form: FormGroup;
   showSpinner = false;
+  version = VERSION.full;
+  reactiveForm = new FormGroup({
+    recaptchaReactive: new FormControl(null, Validators.required)
+  });
 
   constructor(
     private autgoogleService: AutgoogleService,
@@ -30,20 +34,10 @@ export class LoginComponent implements OnInit {
    }
 
   ngOnInit() {
-    // console.log(this.userSocial);
-    // if (this.userSocial) {
-    //   this.router.navigate(['./cliente/login']);
-    // }
+    
   }
 
   login() {
-    //sin modificar
-    // this.autgoogleService.login()
-    //   .then( res => {
-    //     console.log('success')
-    //     console.log(res);
-    //   })
-    //   .catch( err => this.openSnackBar( err.message, 'ok'));
 
     this.autgoogleService.login()
       .then( res => {
@@ -53,6 +47,12 @@ export class LoginComponent implements OnInit {
       })
       .catch( err => this.openSnackBar( err.message, 'ok'))
       .finally(() => this.hasUser());
+  }
+
+  // version = VERSION.full;
+
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
   }
 
   loginMail(event: Event) {

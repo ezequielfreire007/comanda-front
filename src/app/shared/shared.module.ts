@@ -17,6 +17,11 @@ import { OrangeDirective } from './directives/color-estado-mesa/orange.directive
 import { EstadosMesaPipe } from './pipes/estados_mesa/estados-mesa.pipe';
 import { ChartsModule } from 'ng2-charts';
 
+// Importo componentes para captcha
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha';
+
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -41,7 +46,9 @@ import { ChartsModule } from 'ng2-charts';
     BlueDirective,
     OrangeDirective,
     EstadosMesaPipe,
-    ChartsModule
+    ChartsModule,
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule,
   ],
   imports: [
     CommonModule,
@@ -49,7 +56,17 @@ import { ChartsModule } from 'ng2-charts';
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule,
+  ],
+  providers: [
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: '6LcjdrkZAAAAAAyui4qv7lvtOpEeZlfixw5UsE5f',
+      } as RecaptchaSettings,
+    }
   ]
 })
 export class SharedModule { }

@@ -17,6 +17,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from '../environments/environment';
 
+// Importo componentes para captcha
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha';
+import { RECAPTCHA_LANGUAGE } from 'ng-recaptcha';
+
+
 
 export function getAccessToken() {
   return localStorage.getItem('token');
@@ -36,6 +42,8 @@ export function getAccessToken() {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFireStorageModule,
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule,
     [JwtModule.forRoot({
       config: {
         tokenGetter: (getAccessToken),
@@ -59,12 +67,12 @@ export function getAccessToken() {
       useClass: JwtInterceptor,
       multi: true
     },
-    // {
-    //   provide: RECAPTCHA_SETTINGS,
-    //   useValue: {
-    //     siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
-    //   } as RecaptchaSettings,
-    // }
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: '6LcjdrkZAAAAAAyui4qv7lvtOpEeZlfixw5UsE5f',
+      } as RecaptchaSettings,
+    }
   ],
   bootstrap: [AppComponent]
 })
