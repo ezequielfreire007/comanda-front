@@ -49,6 +49,16 @@ Detalle de funcionalidades disponibles!
 
  ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/estadistica_socio.png?raw=true "Title")
 
+## Cliente
+ - Puede seleccionar la mesa siempre que se encuentre disponible.
+
+![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/elegir_mesa_cliente.png?raw=true "Title")
+
+- Puede ver el estado de los pedidos el monto de la cuenta, tambien puede pedir la cuenta.
+
+![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/espera_cliente.png?raw=true "Title")
+
+
 
 ## Por mas ayuda
 
