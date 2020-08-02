@@ -31,12 +31,10 @@ Detalle de funcionalidades disponibles!
 
   ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/pedidos_mozo_empleado.png?raw=true "Title")
 
-
-   
-  
 ### Empleados de preparación de pedidos
- 
+ - Los empleados que se encargan de la preparacion del pedido ven la lista de pedidos y pueden tomar o dejar listo el peido, este una vez listo se trasfiere al mozo para la entrega.
    
+ ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/pedidos_demas_empleado.png?raw=true "Title")
   
 ### Socio
 
@@ -44,6 +42,6 @@ Detalle de funcionalidades disponibles!
    
   
 
-## Further help
+## Por mas ayuda
 
 Email me at ezequiel.a.freire@gmail.com
