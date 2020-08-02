@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, VERSION } from '@angular/core';
 import { Router } from '@angular/router';
 import { Login } from '../../../core/models/login';
 import { AuthfireService } from '../../../core/services/authfire/authfire.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-registrar',
@@ -13,6 +13,10 @@ export class RegistrarComponent implements OnInit {
 
   login: Login;
   form: FormGroup;
+  version = VERSION.full;
+  reactiveForm = new FormGroup({
+    recaptchaReactive: new FormControl(null, Validators.required)
+  });
 
   constructor(
     private router: Router,
@@ -23,6 +27,10 @@ export class RegistrarComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  resolved(captchaResponse: string) {
+    console.log(`Resolved captcha with response ${captchaResponse}:`);
   }
 
   registrar(event: Event) {
@@ -36,12 +44,12 @@ export class RegistrarComponent implements OnInit {
         .then( user => console.log(user))
         .catch( error => console.log(error));
     }
-    this.router.navigate(['./cliente']);
+    this.router.navigate(['./']);
   }
 
   cancelar() {
     console.log('cancelar');
-    this.router.navigate(['./cliente']);
+    this.router.navigate(['./home']);
   }
 
   // validacion del formulario

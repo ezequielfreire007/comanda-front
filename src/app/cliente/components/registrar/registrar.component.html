@@ -11,7 +11,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <form [formGroup]="form" (ngSubmit)="registrar($event)">
+          <form [formGroup]="form" (keyup.enter)="registrar($event)" >
             <div class="form-row">
               <div class="form-group col">
                 <div class="input-group mb-3">
@@ -26,10 +26,31 @@
                 </div>
               </div>
             </div>
-            <div class="modal-footer">
+            <form [formGroup]="reactiveForm" class="modal-footer">
+              <re-captcha (resolved)="resolved($event)" 
+                siteKey="6LcjdrkZAAAAAIaqFVIg4Yso5OZ38lSW88Iql4qm" 
+                formControlName="recaptchaReactive">
+              </re-captcha>
+              <button class="btn btn-secondary" 
+                type="button"
+                data-dismiss="modal"
+                (click)="cancelar()">
+                Cancelar
+              </button>
+              <button class="btn"
+                type="button"
+                data-toggle="modal"
+                data-sitekey="6LcjdrkZAAAAAIaqFVIg4Yso5OZ38lSW88Iql4qm"  
+                [disabled]="reactiveForm.invalid"
+                (click)="registrar()"
+                >
+                Registrar
+              </button>
+            </form>
+            <!-- <div class="modal-footer">
               <button type="button" class="btn btn-secondary" (click)="cancelar()" data-dismiss="modal">Cancelar</button>
               <button type="button" class="btn" [disabled]="form.invalid" type="submit">Registrar</button>
-            </div>
+            </div> -->
           </form>
           <!-- <div class="alert alert-warning" role="alert">
             Recibirás un correo de confirmación si sales sorteado
