@@ -47,12 +47,8 @@ Detalle de funcionalidades disponibles!
 
  - Tambien tener graficos estadisticos de ventas y otras caracteristicas administrativas.
 
- ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/administracion_socio.png?raw=true "Title")
+ ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/estadistica_socio.png?raw=true "Title")
 
-
-
-   
-  
 
 ## Por mas ayuda
 
