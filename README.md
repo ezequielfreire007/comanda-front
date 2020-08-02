@@ -1,27 +1,36 @@
-# ComandaFront
+# TP Final
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.18.
+Trabajo final para la materia Laboratorio 4.
 
-## Development server
+## Guia de Usuario
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Detalle de funcionalidades disponibles!
 
-## Code scaffolding
+### Login
+ - Si es un cliente ingresa por red social o por email, si no se enceuntra registrado lo puede hacer
+   desde el registro.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/login_cliente.png?raw=true "Title")
 
-## Build
+ - Si es un empleado o socio Ingrese con sus credenciales para acceder a todas las opciones de la aplicación, apretando el boton Ingresa.
+  
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+  
+  
+### Mozos
 
-## Running unit tests
+   
+  
+### Empleados de preparación de pedidos
+ 
+   
+  
+### Socio
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+   
+  
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Email me at ezequiel.a.freire@gmail.com
