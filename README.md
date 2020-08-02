@@ -37,6 +37,18 @@ Detalle de funcionalidades disponibles!
  ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/pedidos_demas_empleado.png?raw=true "Title")
   
 ### Socio
+ - Puede ver los empleados y ver quien se encuentra suspendido de vacaciones o licencia.
+
+ ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/estados_empleado_socio.png?raw=true "Title")
+
+ - Desde el panel de administracion puede hacer edicion de mesa, crud de empleado y tambien generar reportes pdf y descargarlos.
+
+ ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/administracion_socio.png?raw=true "Title")
+
+ - Tambien tener graficos estadisticos de ventas y otras caracteristicas administrativas.
+
+ ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/administracion_socio.png?raw=true "Title")
+
 
 
    
