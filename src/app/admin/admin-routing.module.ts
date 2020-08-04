@@ -9,6 +9,7 @@ import { EmpleadoCreateComponent } from './components/empleado-create/empleado-c
 import { ChartComponent } from './components/chart/chart.component';
 import { MesaService } from '../core/services/mesa/mesa.service';
 import { MesaEditComponent } from './components/mesa-edit/mesa-edit.component';
+import { ChartMenuComponent } from './components/chart-menu/chart-menu.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
       { path: 'pedidos', component: PedidosComponent },
       { path: 'empleados/create', component: EmpleadoCreateComponent },
       { path: 'empleados/edit/:id', component: EmpleadoEditComponent },
-      { path: 'chart', component: ChartComponent }
+      { path: 'chart', component: ChartComponent },
+      { path: 'chart-menu', component: ChartMenuComponent }
   ]}
 ];
 

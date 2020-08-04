@@ -155,7 +155,6 @@ export class MenusComponent implements OnInit {
     this.pedidoService.getPedidoFechaMesa(dateSearch).subscribe(pedidos => {
       // console.log(pedidos);
       this.pedidos = pedidos;
-      
     });
 
     setTimeout(() => {

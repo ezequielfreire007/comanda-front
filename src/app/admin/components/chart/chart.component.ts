@@ -92,6 +92,7 @@ export class ChartComponent implements OnInit {
     let dateTemp = dateActual.toISOString().slice(0, 10).split('-');
 
     this.pedidos.forEach( pedido => {
+      // console.log(pedido)
       let fechaped = pedido.fecha_pedido.split('-');
       if (dateTemp[0] === fechaped[0]) {
         switch (fechaped[1]) {
@@ -129,7 +130,7 @@ export class ChartComponent implements OnInit {
             this.cantPorMes.cantNoviembre += 1;
           break;
           case '12':
-            this.cantPorMes.cantDiciembre += 1;  
+            this.cantPorMes.cantDiciembre += 1;
             break;
           default:
             break;

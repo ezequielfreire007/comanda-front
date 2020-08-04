@@ -18,6 +18,7 @@ import { EmpleadoEditComponent } from './components/empleado-edit/empleado-edit.
 import { EmpleadoCreateComponent } from './components/empleado-create/empleado-create.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { MesaEditComponent } from './components/mesa-edit/mesa-edit.component';
+import { ChartMenuComponent } from './components/chart-menu/chart-menu.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MesaEditComponent } from './components/mesa-edit/mesa-edit.component';
     EmpleadoEditComponent,
     EmpleadoCreateComponent,
     ChartComponent,
-    MesaEditComponent
+    MesaEditComponent,
+    ChartMenuComponent,
   ],
   imports: [
     CommonModule,
