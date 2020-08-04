@@ -8,9 +8,13 @@ Detalle de funcionalidades disponibles!
 
 ### Login
  - Si es un cliente ingresa por red social o por email, si no se enceuntra registrado lo puede hacer
-   desde el registro.
+   desde el registro. Una vez que coloca el mail y la contraseña debe precionar Entrar.
 
  ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/login_cliente.png?raw=true "Title")
+
+ - Para registrase el cliente debe colocar un email y password.
+
+ ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/registro_cliente.png?raw=true "Title")
 
  - Si es un empleado o socio ingresa con sus credenciales para acceder a todas las opciones de la aplicación, apretando el boton Ingresa.
 
@@ -57,7 +61,6 @@ Detalle de funcionalidades disponibles!
 - Puede ver el estado de los pedidos el monto de la cuenta, tambien puede pedir la cuenta.
 
 ![Alt text](https://github.com/flecherdev/comanda-front/blob/development/guias/espera_cliente.png?raw=true "Title")
-
 
 
 ## Por mas ayuda
